@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201706192039226_OverrideConventionsForEventsAndEventTypes.Designer.cs">
       <DependentUpon>201706192039226_OverrideConventionsForEventsAndEventTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706192049097_PopulateEventTypesTable.cs" />
+    <Compile Include="Migrations\201706192049097_PopulateEventTypesTable.Designer.cs">
+      <DependentUpon>201706192049097_PopulateEventTypesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -301,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706192039226_OverrideConventionsForEventsAndEventTypes.resx">
       <DependentUpon>201706192039226_OverrideConventionsForEventsAndEventTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706192049097_PopulateEventTypesTable.resx">
+      <DependentUpon>201706192049097_PopulateEventTypesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
