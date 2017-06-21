@@ -210,6 +210,14 @@
     <Compile Include="Migrations\201706192049097_PopulateEventTypesTable.Designer.cs">
       <DependentUpon>201706192049097_PopulateEventTypesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706212033140_ChangedEventTypeNameToType.cs" />
+    <Compile Include="Migrations\201706212033140_ChangedEventTypeNameToType.Designer.cs">
+      <DependentUpon>201706212033140_ChangedEventTypeNameToType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706212044056_PopulateEventTypesTableTypesColumn.cs" />
+    <Compile Include="Migrations\201706212044056_PopulateEventTypesTableTypesColumn.Designer.cs">
+      <DependentUpon>201706212044056_PopulateEventTypesTableTypesColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -308,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706192049097_PopulateEventTypesTable.resx">
       <DependentUpon>201706192049097_PopulateEventTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706212033140_ChangedEventTypeNameToType.resx">
+      <DependentUpon>201706212033140_ChangedEventTypeNameToType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706212044056_PopulateEventTypesTableTypesColumn.resx">
+      <DependentUpon>201706212044056_PopulateEventTypesTableTypesColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
