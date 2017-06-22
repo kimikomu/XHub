@@ -8,7 +8,7 @@ namespace Xhub.ViewModels
 		public string EventLocation { get; set; }
 		public string Date { get; set; }
 		public string Time { get; set; }
-		public int EventType { get; set; }
+		public byte EventType { get; set; }						// set to byte bc there won't be more than 255 types
 		public IEnumerable<EventType> EventTypes { get; set; }
 	}
 }

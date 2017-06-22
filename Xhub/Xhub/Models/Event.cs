@@ -7,15 +7,19 @@ namespace Xhub.Models
 	{
 		public int Id { get; set; }
 
-		[Required]
 		public ApplicationUser EventOwner { get; set; }
+
+		[Required]
+		public string EventOwnerId { get; set; }	
 
 		public DateTime DateTime { get; set; }
 
 		[Required, StringLength(255)]
 		public string EventLocation { get; set; }
 
-		[Required]
 		public EventType EventType { get; set; }
+
+		[Required]
+		public byte EventTypeId { get; set; }
 	}
 }

@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Xhub.Models;
 using Xhub.ViewModels;
 
@@ -15,16 +17,36 @@ namespace Xhub.Controllers
 			_context = new ApplicationDbContext();
 		}
 
-		// Action methods
+		// Create
+		[Authorize]
 		public ActionResult Add()
 		{
-			// Create a view model with the list of event types to return
+			// Return a view model with the list of event types from the database for the Add form
 			var viewModel = new EventsFormViewModel
 			{
 				EventTypes = _context.EventTypes.ToList()
 			};
 
 			return View(viewModel);
+		}
+
+		[Authorize, HttpPost]
+		public ActionResult Add(EventsFormViewModel viewModel)
+		{
+			// Get the Event object parameter information from the view model for the database
+			var e = new Event
+			{
+				EventOwnerId = User.Identity.GetUserId(),
+				DateTime = DateTime.Parse($"{viewModel.Date} {viewModel.Time}"),
+				EventTypeId = viewModel.EventType,
+				EventLocation = viewModel.EventLocation
+			};
+
+			// Add to database and save
+			_context.Events.Add(e);
+			_context.SaveChanges();
+
+			return RedirectToAction("Index", "Home");
 		}
 	}
 }
