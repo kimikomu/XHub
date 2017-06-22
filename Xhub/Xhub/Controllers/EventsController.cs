@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Xhub.Models;
@@ -37,12 +36,12 @@ namespace Xhub.Controllers
 			var e = new Event
 			{
 				EventOwnerId = User.Identity.GetUserId(),
-				DateTime = DateTime.Parse($"{viewModel.Date} {viewModel.Time}"),
+				DateTime = viewModel.DateTime,
 				EventTypeId = viewModel.EventType,
 				EventLocation = viewModel.EventLocation
 			};
 
-			// Add to database and save
+			// Add to database
 			_context.Events.Add(e);
 			_context.SaveChanges();
 
