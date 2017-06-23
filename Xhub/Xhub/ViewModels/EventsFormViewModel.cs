@@ -12,5 +12,7 @@ namespace Xhub.ViewModels
 		public DateTime DateTime => DateTime.Parse($"{Date} {Time}");		// Date and Time are parsed together from the Add form input for the database 
 		public byte EventType { get; set; }									// set to byte bc there won't be more than 255 types
 		public IEnumerable<EventType> EventTypes { get; set; }
+		public string Description { get; set; }
+		public string EventName { get; set; }
 	}
 }

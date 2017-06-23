@@ -10,6 +10,10 @@
 @using (Html.BeginForm("Add", "Events"))
 {
 	<div class="form-group">
+		@Html.LabelFor(m => m.EventName, "Name of the Event")
+		@Html.TextBoxFor(m => m.EventName, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
 		@Html.LabelFor(m => m.EventLocation, "Location")
 		@Html.TextBoxFor(m => m.EventLocation, new { @class = "form-control" })
 	</div>
@@ -20,6 +24,10 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.Time)
 		@Html.TextBoxFor(m => m.Time, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Description)
+		@Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.EventType, "Type of Event")

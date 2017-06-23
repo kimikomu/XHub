@@ -38,7 +38,9 @@ namespace Xhub.Controllers
 				EventOwnerId = User.Identity.GetUserId(),
 				DateTime = viewModel.DateTime,
 				EventTypeId = viewModel.EventType,
-				EventLocation = viewModel.EventLocation
+				EventLocation = viewModel.EventLocation,
+				EventName = viewModel.EventName,
+				Description = viewModel.Description
 			};
 
 			// Add to database

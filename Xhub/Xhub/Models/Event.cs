@@ -21,5 +21,11 @@ namespace Xhub.Models
 
 		[Required]
 		public byte EventTypeId { get; set; }
+
+		[StringLength(255)]
+		public string EventName { get; set; }
+
+		[StringLength(510)]
+		public string Description { get; set; }
 	}
 }
