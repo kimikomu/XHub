@@ -25,7 +25,7 @@ namespace Xhub.Models
 		[StringLength(255)]
 		public string EventName { get; set; }
 
-		[StringLength(510)]
+		[StringLength(255)]
 		public string Description { get; set; }
 	}
 }

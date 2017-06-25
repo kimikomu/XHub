@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201706231828156_AddEventNamePropertyAndAnnotationsToEventModel.Designer.cs">
       <DependentUpon>201706231828156_AddEventNamePropertyAndAnnotationsToEventModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706232041595_UpdateStringLengthOfDescriptionProperty.cs" />
+    <Compile Include="Migrations\201706232041595_UpdateStringLengthOfDescriptionProperty.Designer.cs">
+      <DependentUpon>201706232041595_UpdateStringLengthOfDescriptionProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -305,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Availability\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -348,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706231828156_AddEventNamePropertyAndAnnotationsToEventModel.resx">
       <DependentUpon>201706231828156_AddEventNamePropertyAndAnnotationsToEventModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706232041595_UpdateStringLengthOfDescriptionProperty.resx">
+      <DependentUpon>201706232041595_UpdateStringLengthOfDescriptionProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

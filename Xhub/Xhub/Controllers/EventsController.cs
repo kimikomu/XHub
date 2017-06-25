@@ -16,11 +16,10 @@ namespace Xhub.Controllers
 			_context = new ApplicationDbContext();
 		}
 
-		// Create
+		// Return a view model with a populated Events list
 		[Authorize]
 		public ActionResult Add()
 		{
-			// Return a view model with the list of event types from the database for the Add form
 			var viewModel = new EventsFormViewModel
 			{
 				EventTypes = _context.EventTypes.ToList()
@@ -32,11 +31,24 @@ namespace Xhub.Controllers
 		[Authorize, HttpPost]
 		public ActionResult Add(EventsFormViewModel viewModel)
 		{
-			// Get the Event object parameter information from the view model for the database
+
+			// Ensure form validation
+			if (!ModelState.IsValid || viewModel.DateTimeAvailable() == false)
+			{
+				ModelState.AddModelError("Date", "The date/time is not available.");
+				ModelState.AddModelError("Time", "The date/time is not available.");
+
+				// Events list is not null
+				viewModel.EventTypes = _context.EventTypes.ToList();
+
+				return View("Add", viewModel);
+			}
+
+			// Get the Event object parameter information from the form for the database
 			var e = new Event
 			{
 				EventOwnerId = User.Identity.GetUserId(),
-				DateTime = viewModel.DateTime,
+				DateTime = viewModel.GetDateTime(),
 				EventTypeId = viewModel.EventType,
 				EventLocation = viewModel.EventLocation,
 				EventName = viewModel.EventName,

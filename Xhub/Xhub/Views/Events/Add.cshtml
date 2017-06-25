@@ -16,14 +16,17 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.EventLocation, "Location")
 		@Html.TextBoxFor(m => m.EventLocation, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.EventLocation, "", new { @class = "text-danger" })
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Date)
 		@Html.TextBoxFor(m => m.Date, new { @class = "form-control datepicker" })
+		@Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Time)
 		@Html.TextBoxFor(m => m.Time, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger" })
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Description)
@@ -32,7 +35,13 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.EventType, "Type of Event")
 		@Html.DropDownListFor(m => m.EventType, new SelectList(Model.EventTypes, "Id", "Type"), "", new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.EventType, "", new { @class = "text-danger" })
 	</div>
 
 	<button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+	@Scripts.Render("~/bundles/jqueryval")
 }
