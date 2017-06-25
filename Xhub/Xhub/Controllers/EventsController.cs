@@ -28,7 +28,7 @@ namespace Xhub.Controllers
 			return View(viewModel);
 		}
 
-		[Authorize, HttpPost]
+		[Authorize, HttpPost, ValidateAntiForgeryToken]
 		public ActionResult Add(EventsFormViewModel viewModel)
 		{
 

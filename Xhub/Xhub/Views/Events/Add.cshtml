@@ -9,6 +9,8 @@
 <!--Form to Add an Event-->
 @using (Html.BeginForm("Add", "Events"))
 {
+	@Html.AntiForgeryToken()
+	
 	<div class="form-group">
 		@Html.LabelFor(m => m.EventName, "Name of the Event")
 		@Html.TextBoxFor(m => m.EventName, new { @class = "form-control" })
