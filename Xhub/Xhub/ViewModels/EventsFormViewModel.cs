@@ -33,9 +33,7 @@ namespace Xhub.ViewModels
 		// Validate Date and Time input
 		public bool DateTimeAvailable()
 		{
-			if (Date == null || Time == null) {return false;}
-
-			if (!(GetDateTime() > DateTime.Now)) {return false;}
+			if (!(GetDateTime() > DateTime.Now)) return false;
 
 			return true;
 		}

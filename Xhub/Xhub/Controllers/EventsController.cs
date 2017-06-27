@@ -37,7 +37,7 @@ namespace Xhub.Controllers
 			{
 				ModelState.AddModelError("Date", "The date/time is not available.");
 				ModelState.AddModelError("Time", "The date/time is not available.");
-
+				
 				// Events list is not null
 				viewModel.EventTypes = _context.EventTypes.ToList();
 
