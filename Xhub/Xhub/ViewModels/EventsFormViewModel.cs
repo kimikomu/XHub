@@ -7,7 +7,10 @@ namespace Xhub.ViewModels
 {
 	public class EventsFormViewModel
 	{
-		[Required]
+		[Required(ErrorMessage = "The Event Name field is required.")]
+		public string EventName { get; set; }
+
+		[Required(ErrorMessage = "The Location field is required.")]
 		public string EventLocation { get; set; }
 
 		[Required]
@@ -16,14 +19,12 @@ namespace Xhub.ViewModels
 		[Required]
 		public string Time { get; set; }
 
-		[Required]
+		public string Description { get; set; }
+
+		[Required(ErrorMessage = "The Type field is required.")]
 		public byte EventType { get; set; }                             // set to byte bc there won't be more than 255 types
 
 		public IEnumerable<EventType> EventTypes { get; set; }
-
-		public string Description { get; set; }
-
-		public string EventName { get; set; }
 
 		public DateTime GetDateTime()                                   // Date and Time are parsed together from the Add form input for the database
 		{
