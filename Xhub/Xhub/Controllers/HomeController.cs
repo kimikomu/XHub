@@ -1,30 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Xhub.Models;
 
 namespace Xhub.Controllers
 {
 	public class HomeController : Controller
 	{
+		private readonly ApplicationDbContext _context;
+
+		public HomeController()
+		{
+			_context = new ApplicationDbContext();
+		}
+
+		// Homepage is a list of upcoming events
 		public ActionResult Index()
 		{
-			return View();
-		}
-
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
-			return View();
+			var upcomingEvents = _context.Events;
+			return View(upcomingEvents);
 		}
 	}
 }

@@ -14,7 +14,8 @@ namespace Xhub.Models
 
 		public DateTime DateTime { get; set; }
 
-		[Required, StringLength(255)]
+		[Required]
+		[StringLength(255)]
 		public string EventLocation { get; set; }
 
 		public EventType EventType { get; set; }
@@ -22,6 +23,7 @@ namespace Xhub.Models
 		[Required]
 		public byte EventTypeId { get; set; }
 
+		[Required]
 		[StringLength(255)]
 		public string EventName { get; set; }
 
