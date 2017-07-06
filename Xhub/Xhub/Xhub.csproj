@@ -243,9 +243,14 @@
     <Compile Include="Migrations\201707021646114_AddNameToApplicationUser.Designer.cs">
       <DependentUpon>201707021646114_AddNameToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707060043324_CreateAttendanceTable.cs" />
+    <Compile Include="Migrations\201707060043324_CreateAttendanceTable.Designer.cs">
+      <DependentUpon>201707060043324_CreateAttendanceTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventType.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -371,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707021646114_AddNameToApplicationUser.resx">
       <DependentUpon>201707021646114_AddNameToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060043324_CreateAttendanceTable.resx">
+      <DependentUpon>201707060043324_CreateAttendanceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,6 +7,7 @@ namespace Xhub.Models
 	{
 		public DbSet<Event> Events { get; set; }
 		public DbSet<EventType> EventTypes { get; set; }
+		public DbSet<Attendance> Attendances { get; set; }
 
 		public ApplicationDbContext()
 			: base("DefaultConnection", throwIfV1Schema: false)
@@ -16,6 +17,17 @@ namespace Xhub.Models
 		public static ApplicationDbContext Create()
 		{
 			return new ApplicationDbContext();
+		}
+
+		// Prevent cascade delete between events and attendances to avoid multiple cascade paths 
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Attendance>()
+				.HasRequired(a => a.Event)
+				.WithMany()
+				.WillCascadeOnDelete(false);
+
+			base.OnModelCreating(modelBuilder);
 		}
 	}
 }
