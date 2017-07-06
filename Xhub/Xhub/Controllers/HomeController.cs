@@ -18,5 +18,10 @@ namespace Xhub.Controllers
 			var upcomingEvents = _context.Events;
 			return View(upcomingEvents);
 		}
+
+		public ActionResult About()
+		{
+			return View();
+		}
 	}
 }
