@@ -61,5 +61,15 @@ namespace Xhub.Controllers
 
 			return RedirectToAction("Index", "Home");
 		}
+
+		// Get the events the user is attending and go to view
+		public ActionResult MyEvents()
+		{
+			var userId = User.Identity.GetUserId();
+
+			var myEvents = _context.Attendances.Where(a => a.AttendeeId == userId).Select(a => a.Event).ToList();
+
+			return View(myEvents);
+		}
 	}
 }

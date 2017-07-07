@@ -1,12 +1,29 @@
-﻿@model IEnumerable<Xhub.Models.Event>
+﻿@using Xhub.Models
+@model IEnumerable<Event>
 
 @{
 	ViewBag.Title = "Home Page";
 }
 
+
+@Html.ValidationSummary()
+
 <ul>
-	@foreach (var e in Model)
+	@foreach (var eVent in Model)
 	{
-		<li>@e.EventName - @e.DateTime</li>
+		// Show links for each event if user is logged in
+		<li>
+			@eVent.EventName - @eVent.DateTime
+			
+			@if (User.Identity.IsAuthenticated)
+			{
+				// Pass event id to the controller
+				<div>
+					<a href="@Url.Action("Attend", "Attendance", new {eventId = eVent.Id})">
+						Attend
+					</a>
+				</div>
+			}
+		</li>
 	}
 </ul>
