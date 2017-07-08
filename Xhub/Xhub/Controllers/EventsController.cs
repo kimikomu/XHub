@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Xhub.Models;
@@ -59,17 +60,30 @@ namespace Xhub.Controllers
 			_context.Events.Add(e);
 			_context.SaveChanges();
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("MyEvents", "Events");
 		}
 
-		// Get the events the user is attending and go to view
+		// Get the events the user has created and go to the view
+		[Authorize]
 		public ActionResult MyEvents()
 		{
 			var userId = User.Identity.GetUserId();
 
-			var myEvents = _context.Attendances.Where(a => a.AttendeeId == userId).Select(a => a.Event).ToList();
+			var myEvents = _context.Events
+				.Where(e => e.EventOwnerId == userId && e.DateTime > DateTime.Now)
+				.ToList();
 
 			return View(myEvents);
+		}
+
+		// Get the events the user is attending and go to view
+		public ActionResult Attending()
+		{
+			var userId = User.Identity.GetUserId();
+
+			var eventsImAttending = _context.Attendances.Where(a => a.AttendeeId == userId).Select(a => a.Event).ToList();
+
+			return View(eventsImAttending);
 		}
 	}
 }

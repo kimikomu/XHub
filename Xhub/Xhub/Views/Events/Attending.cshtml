@@ -4,11 +4,11 @@
 	ViewBag.Title = "My Events";
 }
 
-<h1>Events I've Created</h1>
+<h1>Events I'm Attending</h1>
 
 <ul>
 	@foreach (var e in Model)
 	{
-		<li>@e.EventName - @e.DateTime - Location: @e.EventLocation</li>
+		<li>@e.EventName - @e.DateTime</li>
 	}
 </ul>
