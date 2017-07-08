@@ -63,6 +63,13 @@ namespace Xhub.Controllers
 			return RedirectToAction("MyEvents", "Events");
 		}
 
+		// View for upcoming events
+		public ActionResult AllEvents()
+		{
+			var upcomingEvents = _context.Events;
+			return View(upcomingEvents);
+		}
+
 		// Get the events the user has created and go to the view
 		[Authorize]
 		public ActionResult MyEvents()
