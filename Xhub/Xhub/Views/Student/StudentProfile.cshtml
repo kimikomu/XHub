@@ -1,0 +1,32 @@
+﻿@model Xhub.ViewModels.ProfileFormViewModel
+
+@{
+	ViewBag.Title = "Propfile";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile</h2>
+
+<form>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Name)
+		@Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Alias)
+		@Html.TextBoxFor(m => m.Alias, new { @class = "form-control"})
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Ability)
+		@Html.TextBoxFor(m => m.Ability, new { @class = "form-control"})
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Grade)
+		@Html.DropDownListFor(m => m.Grade, new SelectList(Model.Grades, "Id", "GradeLevel"), "", new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Origin)
+		@Html.DropDownListFor(m => m.Origin, new SelectList(Enum.GetValues(typeof(Xhub.Models.Student.Origins))), "", new { @class = "form-control" })
+	</div>
+
+</form>
