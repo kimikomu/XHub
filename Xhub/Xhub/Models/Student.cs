@@ -26,16 +26,14 @@ namespace Xhub.Models
 
 		public enum Origins
 		{
-			Mutant = 0,
-			Mutate = 1,
-			Alein = 2,
-			Other = 3
+			Mutant = 1,
+			Mutate = 2,
+			Alein = 3,
+			Other = 4
 		}
 
-		public int OriginId
-		{
-			get { return (int)this.Origin; }
-			set { Origin = (Origins) value; }
-		}
+		public ApplicationUser StudentUser { get; set; }
+
+		public string StudentUserId { get; set; }
 	}
 }

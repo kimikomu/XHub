@@ -21,6 +21,6 @@ namespace Xhub.ViewModels
 		public IEnumerable<Grade> Grades { get; set; }
 
 		[Required]
-		public IEnumerable<Student.Origins> Origin { get; set; }
+		public Student.Origins Origin { get; set; }
 	}
 }

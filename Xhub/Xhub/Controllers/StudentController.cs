@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Xhub.Models;
 using Xhub.ViewModels;
 
@@ -37,10 +38,22 @@ namespace Xhub.Controllers
 				return View("StudentProfile", viewModel);
 			}
 
-			// Creat an Event object from the information from the form for the database
+			var userId = User.Identity.GetUserId();
 
+			// Creat an Event object from the information from the form for the database
+			var student = new Student
+			{
+				Name = viewModel.Name,
+				Alias = viewModel.Alias,
+				Ability = viewModel.Ability,
+				GradeId = viewModel.Grade,
+				Origin = viewModel.Origin,
+				StudentUserId = userId
+			};
 
 			// Add to database
+			_context.Students.Add(student);
+			_context.SaveChanges();
 
 
 			return RedirectToAction("Index", "Home");
