@@ -29,7 +29,9 @@ namespace Xhub.Controllers
 			return View(viewModel);
 		}
 
-		[Authorize, HttpPost, ValidateAntiForgeryToken]
+		[Authorize]
+		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Add(EventsFormViewModel viewModel)
 		{
 
@@ -45,7 +47,7 @@ namespace Xhub.Controllers
 				return View("Add", viewModel);
 			}
 
-			// Get the Event object parameter information from the form for the database
+			// Creat an Event object from the information from the form for the database
 			var e = new Event
 			{
 				EventOwnerId = User.Identity.GetUserId(),

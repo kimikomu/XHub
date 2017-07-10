@@ -7,26 +7,38 @@
 
 <h2>Profile</h2>
 
-<form>
+@using (Html.BeginForm("StudentProfile", "Student"))
+{
 	<div class="form-group">
 		@Html.LabelFor(m => m.Name)
-		@Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
+		@Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+		@Html.ValidationMessageFor(m => m.Name)
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Alias)
-		@Html.TextBoxFor(m => m.Alias, new { @class = "form-control"})
+		@Html.TextBoxFor(m => m.Alias, new {@class = "form-control"})
+		@Html.ValidationMessageFor(m => m.Alias)
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Ability)
-		@Html.TextBoxFor(m => m.Ability, new { @class = "form-control"})
+		@Html.TextBoxFor(m => m.Ability, new {@class = "form-control"})
+		@Html.ValidationMessageFor(m => m.Ability)
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Grade)
-		@Html.DropDownListFor(m => m.Grade, new SelectList(Model.Grades, "Id", "GradeLevel"), "", new { @class = "form-control" })
+		@Html.DropDownListFor(m => m.Grade, new SelectList(Model.Grades, "Id", "GradeLevel"), "", new {@class = "form-control"})
+		@Html.ValidationMessageFor(m => m.Grade)
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.Origin)
-		@Html.DropDownListFor(m => m.Origin, new SelectList(Enum.GetValues(typeof(Xhub.Models.Student.Origins))), "", new { @class = "form-control" })
+		@Html.DropDownListFor(m => m.Origin, new SelectList(Enum.GetValues(typeof(Xhub.Models.Student.Origins))), "", new {@class = "form-control"})
+		@Html.ValidationMessageFor(m => m.Origin)
 	</div>
 
-</form>
+	<button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+	@Scripts.Render("~/bundles/jqueryval")
+}
