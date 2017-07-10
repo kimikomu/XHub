@@ -29,7 +29,9 @@ namespace Xhub.Controllers
 		}
 
 		// 
+		[Authorize]
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult StudentProfile(ProfileFormViewModel viewModel)
 		{
 			// Ensure form validation
@@ -54,7 +56,6 @@ namespace Xhub.Controllers
 			// Add to database
 			_context.Students.Add(student);
 			_context.SaveChanges();
-
 
 			return RedirectToAction("Index", "Home");
 		}
