@@ -20,4 +20,11 @@
 	<li>
 		Grade: @Model.Grade.GradeLevel
 	</li>
+	<li>
+		Origin: @Model.Origin
+	</li>
 </ul>
+
+<div>
+	<a href="@Url.Action("EditProfile", "Student", new { id = Model.Id })">Edit</a>
+</div>

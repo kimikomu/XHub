@@ -22,5 +22,7 @@ namespace Xhub.ViewModels
 
 		[Required]
 		public Student.Origins Origin { get; set; }
+
+		public string Heading { get; set; }
 	}
 }

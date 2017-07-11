@@ -1,11 +1,11 @@
 ﻿@model Xhub.ViewModels.ProfileFormViewModel
 
 @{
-	ViewBag.Title = "Propfile";
+	ViewBag.Title = Model.Heading;
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Profile</h2>
+<h2>@Model.Heading</h2>
 
 @using (Html.BeginForm("StudentProfile", "Student"))
 {

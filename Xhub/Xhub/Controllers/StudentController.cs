@@ -22,7 +22,8 @@ namespace Xhub.Controllers
 		{
 			var viewModel = new ProfileFormViewModel
 			{
-				Grades = _context.Grades.ToList()
+				Grades = _context.Grades.ToList(),
+				Heading = "Add Your Profile"
 			};
 
 			return View(viewModel);
@@ -65,9 +66,31 @@ namespace Xhub.Controllers
 		{
 			var userId = User.Identity.GetUserId();
 			var student = _context.Students.FirstOrDefault(s => s.StudentUserId == userId);
-			student.Grade = _context.Grades.FirstOrDefault(x => x.Id == student.GradeId);
+			student.Grade = _context.Grades.FirstOrDefault(g => g.Id == student.GradeId);
 
 			return View(student);
 		}
+
+		[Authorize]
+		public ActionResult EditProfile(int id)
+		{
+			var userId = User.Identity.GetUserId();
+
+			var student = _context.Students.Single(s => s.Id == id && s.StudentUserId == userId);
+
+			var viewModel = new ProfileFormViewModel
+			{
+				Grades = _context.Grades.ToList(),
+				Heading = "Edit Your Profile",
+				Name = student.Name,
+				Alias = student.Alias,
+				Ability = student.Ability,
+				Grade = student.GradeId,
+				Origin = student.Origin
+			};
+
+			return View("StudentProfile", viewModel);
+		}
+
 	}
 }
