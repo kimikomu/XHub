@@ -357,7 +357,7 @@
     <Content Include="Views\Attendance\Sorry.cshtml" />
     <Content Include="Views\Events\MyEvents.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Student\StudentProfile.cshtml" />
+    <Content Include="Views\Student\ProfileForm.cshtml" />
     <Content Include="Views\Student\StudentInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>

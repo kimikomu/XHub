@@ -16,9 +16,9 @@ namespace Xhub.Controllers
 			_context = new ApplicationDbContext();
 		}
 		
-		// Return a viewmodel with a populated list of grades
+		// Return a form with a populated list of grades
 		[Authorize]
-		public ActionResult StudentProfile()
+		public ActionResult CreateProfile()
 		{
 			var viewModel = new ProfileFormViewModel
 			{
@@ -26,24 +26,27 @@ namespace Xhub.Controllers
 				Heading = "Add Your Profile"
 			};
 
-			return View(viewModel);
+			return View("ProfileForm", viewModel);
 		}
 
-		// 
+		// Create a database entry of student
 		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult StudentProfile(ProfileFormViewModel viewModel)
+		public ActionResult CreateProfile(ProfileFormViewModel viewModel)
 		{
 			// Ensure form validation
 			if (!ModelState.IsValid)
 			{
-				return View("StudentProfile", viewModel);
+				// Grades list is not null
+				viewModel.Grades = _context.Grades.ToList();
+
+				return View("ProfileForm", viewModel);
 			}
 
 			var userId = User.Identity.GetUserId();
 
-			// Creat an Event object from the information from the form for the database
+			// New student object takes the information from the form
 			var student = new Student
 			{
 				Name = viewModel.Name,
@@ -61,16 +64,18 @@ namespace Xhub.Controllers
 			return RedirectToAction("StudentInfo", "Student");
 		}
 
+		// Read the student profile
 		[Authorize]
 		public ActionResult StudentInfo()
 		{
 			var userId = User.Identity.GetUserId();
-			var student = _context.Students.FirstOrDefault(s => s.StudentUserId == userId);
-			student.Grade = _context.Grades.FirstOrDefault(g => g.Id == student.GradeId);
+			var student = _context.Students.Single(s => s.StudentUserId == userId);
+			student.Grade = _context.Grades.Single(g => g.Id == student.GradeId);
 
 			return View(student);
 		}
 
+		// Return a form with the student's information to edit
 		[Authorize]
 		public ActionResult EditProfile(int id)
 		{
@@ -80,6 +85,7 @@ namespace Xhub.Controllers
 
 			var viewModel = new ProfileFormViewModel
 			{
+				Id = student.Id,
 				Grades = _context.Grades.ToList(),
 				Heading = "Edit Your Profile",
 				Name = student.Name,
@@ -89,8 +95,39 @@ namespace Xhub.Controllers
 				Origin = student.Origin
 			};
 
-			return View("StudentProfile", viewModel);
+			return View("ProfileForm", viewModel);
 		}
+
+		// Edit the student profile
+		[Authorize]
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult EditProfile(ProfileFormViewModel viewModel)
+		{
+			// Ensure form validation
+			if (!ModelState.IsValid)
+			{
+				// Grades list is not null
+				viewModel.Grades = _context.Grades.ToList();
+
+				return View("ProfileForm", viewModel);
+			}
+
+			var userId = User.Identity.GetUserId();
+
+			// Student properties are updated by the form
+			var student = _context.Students.Single(s => s.Id == viewModel.Id && s.StudentUserId == userId);
+			student.Name = viewModel.Name;
+			student.Alias = viewModel.Alias;
+			student.Ability = viewModel.Ability;
+			student.GradeId = viewModel.Grade;
+			student.Origin = viewModel.Origin;
+
+			_context.SaveChanges();
+
+			return RedirectToAction("StudentInfo", "Student");
+		}
+
 
 	}
 }

@@ -6,6 +6,8 @@ namespace Xhub.ViewModels
 {
 	public class ProfileFormViewModel
 	{
+		public int Id { get; set; }
+
 		[Required]
 		public string Name { get; set; }
 
@@ -23,6 +25,13 @@ namespace Xhub.ViewModels
 		[Required]
 		public Student.Origins Origin { get; set; }
 
+		// Heading for the page can be modified
 		public string Heading { get; set; }
+
+		// if the student id exists, go to the edit action. Otherwise, go to the create action
+		public string Action
+		{
+			get { return (Id != 0) ? "EditProfile" : "CreateProfile"; }
+		}
 	}
 }
