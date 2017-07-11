@@ -57,8 +57,17 @@ namespace Xhub.Controllers
 			_context.Students.Add(student);
 			_context.SaveChanges();
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("StudentInfo", "Student");
 		}
 
+		[Authorize]
+		public ActionResult StudentInfo()
+		{
+			var userId = User.Identity.GetUserId();
+			var student = _context.Students.FirstOrDefault(s => s.StudentUserId == userId);
+			student.Grade = _context.Grades.FirstOrDefault(x => x.Id == student.GradeId);
+
+			return View(student);
+		}
 	}
 }

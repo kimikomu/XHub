@@ -34,7 +34,6 @@ namespace Xhub.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Add(EventsFormViewModel viewModel)
 		{
-
 			// Ensure form validation
 			if (!ModelState.IsValid || viewModel.DateTimeAvailable() == false)
 			{
@@ -72,7 +71,7 @@ namespace Xhub.Controllers
 			return View(upcomingEvents);
 		}
 
-		// Get the events the user has created and go to the view
+		// Get the future events with the user id as the event owner id
 		[Authorize]
 		public ActionResult MyEvents()
 		{

@@ -1,0 +1,23 @@
+﻿@model Xhub.Models.Student
+
+@{
+	ViewBag.Title = "Student Information";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Student Information</h2>
+
+<ul>
+	<li>
+		Name: @Model.Name
+	</li>
+	<li>
+		Alias: @Model.Alias
+	</li>
+	<li>
+		Ability: @Model.Ability
+	</li>
+	<li>
+		Grade: @Model.Grade.GradeLevel
+	</li>
+</ul>

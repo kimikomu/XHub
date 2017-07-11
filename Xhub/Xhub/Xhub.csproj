@@ -286,6 +286,7 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Origins.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -357,6 +358,7 @@
     <Content Include="Views\Events\MyEvents.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Student\StudentProfile.cshtml" />
+    <Content Include="Views\Student\StudentInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
