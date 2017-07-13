@@ -1,0 +1,29 @@
+﻿@model Xhub.Models.Event
+
+@{
+	ViewBag.Title = "Event Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Event Details</h2>
+
+<ul>
+	<li>
+		Event Name: @Model.EventName
+	</li>
+	<li>
+		Time: @Model.DateTime
+	</li>
+	<li>
+		Location: @Model.EventLocation
+	</li>
+	<li>
+		Type: @Model.EventType.Type
+	</li>
+	<li>
+		Description: @Model.Description
+	</li>
+	<li>
+		Created by: @Model
+	</li>
+</ul>

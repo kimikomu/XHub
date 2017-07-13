@@ -155,5 +155,21 @@ namespace Xhub.Controllers
 
 			return RedirectToAction("MyEvents", "Events");
 		}
+
+		// Return an event's details to view
+		[Authorize]
+		public ActionResult Details(int? eventId)
+		{
+			// Avoid null exception
+			if (!eventId.HasValue)
+			{
+				return RedirectToAction("Attending", "Events");
+			}
+
+			var eVent = _context.Events.Single(e => e.Id == eventId);
+			eVent.EventType = _context.EventTypes.Single(e => e.Id == eVent.EventTypeId);
+
+			return View("Details", eVent);
+		}
 	}
 }

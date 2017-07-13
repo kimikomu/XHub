@@ -2,13 +2,26 @@
 
 @{
 	ViewBag.Title = "My Events";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Events I'm Attending</h1>
 
 <ul>
-	@foreach (var e in Model)
+	@foreach (var eVent in Model)
 	{
-		<li>@e.EventName - @e.DateTime</li>
+		<li>
+			@eVent.EventName - @eVent.DateTime
+
+			@if (User.Identity.IsAuthenticated)
+			{
+				// Pass event id to the controller
+				<div>
+					<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
+						Details
+					</a>
+				</div>
+			}
+		</li>
 	}
 </ul>
