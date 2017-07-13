@@ -9,6 +9,11 @@
 <ul>
 	@foreach (var e in Model)
 	{
-		<li>@e.EventName - @e.DateTime - Location: @e.EventLocation</li>
+		<li>
+			@e.EventName - @e.DateTime - Location: @e.EventLocation
+			<div>
+				<a href="@Url.Action("Edit", "Events")">Edit</a>
+			</div>
+		</li>
 	}
 </ul>

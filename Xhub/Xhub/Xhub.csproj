@@ -352,7 +352,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Events\Add.cshtml" />
+    <Content Include="Views\Events\EventForm.cshtml" />
     <Content Include="Views\Events\Attending.cshtml" />
     <Content Include="Views\Attendance\Sorry.cshtml" />
     <Content Include="Views\Events\MyEvents.cshtml" />

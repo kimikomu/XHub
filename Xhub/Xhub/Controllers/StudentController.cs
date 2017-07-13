@@ -127,7 +127,5 @@ namespace Xhub.Controllers
 
 			return RedirectToAction("StudentInfo", "Student");
 		}
-
-
 	}
 }

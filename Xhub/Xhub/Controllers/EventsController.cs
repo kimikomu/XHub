@@ -26,7 +26,7 @@ namespace Xhub.Controllers
 				EventTypes = _context.EventTypes.ToList()
 			};
 
-			return View(viewModel);
+			return View("EventForm", viewModel);
 		}
 
 		[Authorize]
@@ -43,7 +43,7 @@ namespace Xhub.Controllers
 				// Events list is not null
 				viewModel.EventTypes = _context.EventTypes.ToList();
 
-				return View("Add", viewModel);
+				return View("EventForm", viewModel);
 			}
 
 			// Creat an Event object from the information from the form for the database
@@ -92,6 +92,18 @@ namespace Xhub.Controllers
 			var eventsImAttending = _context.Attendances.Where(a => a.AttendeeId == userId).Select(a => a.Event).ToList();
 
 			return View(eventsImAttending);
+		}
+
+		// Return a view model with a populated Events list
+		[Authorize]
+		public ActionResult Edit()
+		{
+			var viewModel = new EventsFormViewModel
+			{
+				EventTypes = _context.EventTypes.ToList()
+			};
+
+			return View("EventForm", viewModel);
 		}
 	}
 }
