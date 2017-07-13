@@ -68,7 +68,7 @@ namespace Xhub.Controllers
 		// View for upcoming events
 		public ActionResult AllEvents()
 		{
-			var upcomingEvents = _context.Events;
+			var upcomingEvents = _context.Events.OrderBy(e => e.DateTime);
 			return View(upcomingEvents);
 		}
 
@@ -80,6 +80,7 @@ namespace Xhub.Controllers
 
 			var myEvents = _context.Events
 				.Where(e => e.EventOwnerId == userId && e.DateTime > DateTime.Now)
+				.OrderBy(e => e.DateTime)
 				.ToList();
 
 			return View(myEvents);
@@ -90,7 +91,11 @@ namespace Xhub.Controllers
 		{
 			var userId = User.Identity.GetUserId();
 
-			var eventsImAttending = _context.Attendances.Where(a => a.AttendeeId == userId).Select(a => a.Event).ToList();
+			var eventsImAttending = _context.Attendances
+				.Where(a => a.AttendeeId == userId)
+				.Select(a => a.Event)
+				.OrderBy(e => e.DateTime)
+				.ToList();
 
 			return View(eventsImAttending);
 		}
