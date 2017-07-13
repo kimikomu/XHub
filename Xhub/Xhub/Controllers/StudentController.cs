@@ -115,8 +115,10 @@ namespace Xhub.Controllers
 
 			var userId = User.Identity.GetUserId();
 
-			// Student properties are updated by the form
+			// Current student is selected for update
 			var student = _context.Students.Single(s => s.Id == viewModel.Id && s.StudentUserId == userId);
+
+			// Student properties are updated by the form
 			student.Name = viewModel.Name;
 			student.Alias = viewModel.Alias;
 			student.Ability = viewModel.Ability;

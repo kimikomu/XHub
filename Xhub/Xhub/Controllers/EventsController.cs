@@ -23,6 +23,7 @@ namespace Xhub.Controllers
 		{
 			var viewModel = new EventsFormViewModel
 			{
+				Heading = "Create an Event",
 				EventTypes = _context.EventTypes.ToList()
 			};
 
@@ -96,14 +97,58 @@ namespace Xhub.Controllers
 
 		// Return a view model with a populated Events list
 		[Authorize]
-		public ActionResult Edit()
+		public ActionResult Edit(int id)
 		{
+			var userId = User.Identity.GetUserId();
+
+			var eVent = _context.Events.Single(e => e.Id == id && e.EventOwnerId == userId);
+
 			var viewModel = new EventsFormViewModel
 			{
-				EventTypes = _context.EventTypes.ToList()
+				Id = eVent.Id,
+				Heading = "Edit an Event",
+				EventTypes = _context.EventTypes.ToList(),
+				EventName = eVent.EventName,
+				Date = eVent.DateTime.ToString("d MMM yyyy"),
+				Time = eVent.DateTime.ToString("HH:mm"),
+				EventLocation = eVent.EventLocation,
+				Description = eVent.Description,
+				EventType = eVent.EventTypeId
 			};
 
 			return View("EventForm", viewModel);
+		}
+
+		[Authorize]
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit(EventsFormViewModel viewModel)
+		{
+			// Ensure form validation
+			if (!ModelState.IsValid)
+			{
+				// Events list is not null
+				viewModel.EventTypes = _context.EventTypes.ToList();
+
+				return View("EventForm", viewModel);
+			}
+
+			var userId = User.Identity.GetUserId();
+
+			// Get the event to change
+			var eVent = _context.Events.Single(e => e.Id == viewModel.Id && e.EventOwnerId == userId);
+
+			// Event properties are updated
+			eVent.EventName = viewModel.EventName;
+			eVent.EventLocation = viewModel.EventLocation;
+			eVent.DateTime = viewModel.GetDateTime();
+			eVent.Description = viewModel.Description;
+			eVent.EventTypeId = viewModel.EventType;
+
+			// Update database
+			_context.SaveChanges();
+
+			return RedirectToAction("MyEvents", "Events");
 		}
 	}
 }
