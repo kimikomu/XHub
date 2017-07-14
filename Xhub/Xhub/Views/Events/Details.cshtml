@@ -27,3 +27,12 @@
 		Created by: @Model
 	</li>
 </ul>
+@if (User.Identity.IsAuthenticated)
+{
+	// Pass event id to the controller
+	<div>
+		<a href="@Url.Action("Delete", "Attendance", new { eventId = Model.Id })">
+			Remove Attendance
+		</a>
+	</div>
+}

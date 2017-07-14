@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Xhub.Models;
@@ -47,6 +49,31 @@ namespace Xhub.Controllers
 		public ActionResult Sorry()
 		{
 			return View();
+		}
+
+
+		public ActionResult Delete(int? eventId)
+		{
+			// Avoid null exception
+			if (eventId == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+					
+			var userId = User.Identity.GetUserId();
+			var attendance = _context.Attendances.Single(a => a.AttendeeId == userId && a.EventId == eventId);
+
+			// Check if attendance exists
+			if (attendance == null)
+			{
+				return HttpNotFound();
+			}
+
+			// Delete Attendance from database
+			_context.Entry(attendance).State = EntityState.Deleted;
+			_context.SaveChanges();
+
+			return RedirectToAction("Attending", "Events");
 		}
 	}
 }

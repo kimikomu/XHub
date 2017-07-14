@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Xhub.Models;
@@ -161,9 +162,9 @@ namespace Xhub.Controllers
 		public ActionResult Details(int? eventId)
 		{
 			// Avoid null exception
-			if (!eventId.HasValue)
+			if (eventId == null)
 			{
-				return RedirectToAction("Attending", "Events");
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
 			var eVent = _context.Events.Single(e => e.Id == eventId);
