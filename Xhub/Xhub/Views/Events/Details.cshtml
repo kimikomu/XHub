@@ -23,16 +23,27 @@
 	<li>
 		Description: @Model.Description
 	</li>
-	<li>
-		Created by: @Model
-	</li>
 </ul>
 @if (User.Identity.IsAuthenticated)
 {
-	// Pass event id to the controller
 	<div>
-		<a href="@Url.Action("Delete", "Attendance", new { eventId = Model.Id })">
+		<a class="js-delete-attendance" data-event-id="@Model.Id">
 			Remove Attendance
 		</a>
 	</div>
+}
+
+@section scripts
+{
+	<script>
+		$(document).ready(function() {
+			$(".js-delete-attendance").click(function() {
+				if (confirm("Are you sure you want to cancel attendance?")) {
+
+					var url = '@Url.Action("Delete", "Attendance", new {eventId = Model.Id})';
+					window.location.href = url;
+				}
+			});
+		});
+	</script>
 }
