@@ -1,0 +1,56 @@
+﻿@model Xhub.Models.Event
+
+@{
+	ViewBag.Title = "My Event Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Event Details</h2>
+
+<ul>
+	<li>
+		Event Name: @Model.EventName
+	</li>
+	<li>
+		Time: @Model.DateTime
+	</li>
+	<li>
+		Location: @Model.EventLocation
+	</li>
+	<li>
+		Type: @Model.EventType.Type
+	</li>
+	<li>
+		Description: @Model.Description
+	</li>
+</ul>
+@if (User.Identity.IsAuthenticated)
+{
+	<div>
+		<a href="@Url.Action("Edit", "Events", new {eventId = Model.Id})">
+			Edit
+		</a>
+	</div>
+	
+	<div>
+		<a class="js-delete-attendance" data-event-id="@Model.Id">
+			Cancel
+		</a>
+	</div>
+}
+
+@section scripts
+{
+	<script>
+		$(document).ready(function() {
+			$(".js-delete-attendance").click(function() {
+				if (confirm("Are you sure you want to cancel this event?")) {
+
+				// Send the event id to the action
+					var url = '@Url.Action("Cancel", "Events", new {eventId = Model.Id})';
+					window.location.href = url;
+				}
+			});
+		});
+	</script>
+}
