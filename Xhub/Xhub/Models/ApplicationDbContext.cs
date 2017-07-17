@@ -26,7 +26,7 @@ namespace Xhub.Models
 		{
 			modelBuilder.Entity<Attendance>()
 				.HasRequired(a => a.Event)
-				.WithMany()
+				.WithMany(e => e.Attendances)
 				.WillCascadeOnDelete(false);
 
 			base.OnModelCreating(modelBuilder);

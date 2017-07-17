@@ -197,6 +197,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707161435520_AddAttendancesToEvent.cs" />
+    <Compile Include="Migrations\201707161435520_AddAttendancesToEvent.Designer.cs">
+      <DependentUpon>201707161435520_AddAttendancesToEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707170021182_RemoveAttendancesFromEvents.cs" />
+    <Compile Include="Migrations\201707170021182_RemoveAttendancesFromEvents.Designer.cs">
+      <DependentUpon>201707170021182_RemoveAttendancesFromEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707170056336_RemoveAllAttendanceUsageInCode.cs" />
+    <Compile Include="Migrations\201707170056336_RemoveAllAttendanceUsageInCode.Designer.cs">
+      <DependentUpon>201707170056336_RemoveAllAttendanceUsageInCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Old_Migrations\201706192007234_InitialModel.cs" />
     <Compile Include="Old_Migrations\201706192007234_InitialModel.Designer.cs">
       <DependentUpon>201706192007234_InitialModel.cs</DependentUpon>
@@ -381,6 +393,15 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707161435520_AddAttendancesToEvent.resx">
+      <DependentUpon>201707161435520_AddAttendancesToEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707170021182_RemoveAttendancesFromEvents.resx">
+      <DependentUpon>201707170021182_RemoveAttendancesFromEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707170056336_RemoveAllAttendanceUsageInCode.resx">
+      <DependentUpon>201707170056336_RemoveAllAttendanceUsageInCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Old_Migrations\201706192007234_InitialModel.resx">
       <DependentUpon>201706192007234_InitialModel.cs</DependentUpon>
     </EmbeddedResource>

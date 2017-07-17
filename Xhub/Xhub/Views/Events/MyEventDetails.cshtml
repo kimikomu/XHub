@@ -1,4 +1,4 @@
-﻿@model Xhub.Models.Event
+﻿	@model Xhub.Models.Event
 
 @{
 	ViewBag.Title = "My Event Details";
@@ -27,11 +27,13 @@
 @if (User.Identity.IsAuthenticated)
 {
 	<div>
-		<a href="@Url.Action("Edit", "Events", new {eventId = Model.Id})">
+		<a href="@Url.Action("Edit", "Events", new {eventId=Model.Id})">
 			Edit
 		</a>
 	</div>
-	
+
+
+<!--TODO: Broken! Fix below. Add Cancel Action by using logical delete-->	
 	<div>
 		<a class="js-delete-attendance" data-event-id="@Model.Id">
 			Cancel

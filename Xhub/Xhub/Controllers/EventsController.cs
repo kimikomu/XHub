@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -69,7 +70,10 @@ namespace Xhub.Controllers
 		// View for upcoming events
 		public ActionResult AllEvents()
 		{
-			var upcomingEvents = _context.Events.OrderBy(e => e.DateTime);
+			var upcomingEvents = _context.Events
+				.OrderBy(e => e.DateTime)
+				.Include(e => e.Attendances);
+			
 			return View(upcomingEvents);
 		}
 
@@ -167,10 +171,17 @@ namespace Xhub.Controllers
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var eVent = _context.Events.Single(e => e.Id == eventId);
+			var eVent = _context.Events
+				.Include(e => e.Attendances)
+				.Single(e => e.Id == eventId);
 			eVent.EventType = _context.EventTypes.Single(e => e.Id == eVent.EventTypeId);
 
 			return View("Details", eVent);
+		}
+
+		public ActionResult Cancel(int eventid)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

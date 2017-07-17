@@ -25,8 +25,6 @@ namespace Xhub.Controllers
 			// If the attendance is already in the database
 			if (_context.Attendances.Any(a => a.AttendeeId == userId && a.EventId == eventId))
 			{
-				// Temporary. Find a better way!
-				ModelState.AddModelError("eventId", "You are already scheduled to attend that event.");
 				
 				// Temporary redirect to Sorry page
 				return RedirectToAction("Sorry");
