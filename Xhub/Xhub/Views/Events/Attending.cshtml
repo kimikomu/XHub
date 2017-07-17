@@ -15,6 +15,11 @@
 
 			@if (User.Identity.IsAuthenticated)
 			{
+				if (eVent.IsCanceled)
+				{
+					<div>Canceled</div>
+				}
+				
 				// Pass event id to the controller
 				<div>
 					<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">

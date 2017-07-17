@@ -195,9 +195,14 @@ namespace Xhub.Controllers
 			return View(eVent);
 		}
 
-		public ActionResult Cancel(int eventid)
+		public ActionResult Cancel(int eventId)
 		{
-			throw new NotImplementedException();
+			var userId = User.Identity.GetUserId();
+			var eVent = _context.Events.Single(e => e.Id == eventId && e.EventOwnerId == userId);
+			eVent.IsCanceled = true;
+			_context.SaveChanges();
+
+			return RedirectToAction("MyEvents");
 		}
 	}
 }

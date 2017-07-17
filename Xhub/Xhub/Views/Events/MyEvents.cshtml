@@ -8,12 +8,18 @@
 
 <ul>
 	@foreach (var e in Model)
-	{
+	{	
 		<li>
 			@e.EventName - @e.DateTime - Location: @e.EventLocation
+			
+			@if (e.IsCanceled)
+			{
+				<div>Canceled</div>
+			}
+			
 			<div>
 				<a href="@Url.Action("MyEventDetails", "Events", new { eventId = e.Id })">Details</a>
-			</div>
+			</div>		
 		</li>
 	}
 </ul>

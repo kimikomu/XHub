@@ -26,27 +26,34 @@
 	</li>
 </ul>
 
-@if (User.Identity.IsAuthenticated)
+@if (!Model.IsCanceled)
 {
-	// Give the user the option to either remove their attendance or attend the event
-	var userId = User.Identity.GetUserId();
+	if (User.Identity.IsAuthenticated)
+	 {
+		 // Give the user the option to either remove their attendance or attend the event
+		 var userId = User.Identity.GetUserId();
 
-	if (Model.Attendances.Any(a => a.EventId == Model.Id)&&(Model.Attendances.Any(a => a.AttendeeId == userId)))
-	{
-		<div>
-			<a class="js-delete-attendance" data-event-id="@Model.Id">
-				Remove Attendance
-			</a>
-		</div>
-	} else
-	{
-		// Pass event id to the controller
-		<div>
-			<a href="@Url.Action("Attend", "Attendance", new {eventId = Model.Id})">
-				Attend
-			</a>
-		</div>
-	}
+		 if (Model.Attendances.Any(a => a.EventId == Model.Id) && Model.Attendances.Any(a => a.AttendeeId == userId))
+		 {
+			 <div>
+				 <a class="js-delete-attendance" data-event-id="@Model.Id">
+					 Remove Attendance
+				 </a>
+			 </div>
+		 }
+		 else
+		 {
+			 // Pass event id to the controller
+			 <div>
+				 <a href="@Url.Action("Attend", "Attendance", new {eventId = Model.Id})">
+					 Attend
+				 </a>
+			 </div>
+		 }
+	 }
+} else
+{
+	<div>Canceled</div>
 }
 
 @section scripts

@@ -24,16 +24,19 @@
 		Description: @Model.Description
 	</li>
 </ul>
-@if (User.Identity.IsAuthenticated)
+
+@if (Model.IsCanceled)
 {
+	<div>Canceled</div>
+}
+
+@if (User.Identity.IsAuthenticated && !Model.IsCanceled)
+{	
 	<div>
 		<a href="@Url.Action("Edit", "Events", new {eventId = Model.Id})">
 			Edit
 		</a>
 	</div>
-
-
-<!--TODO: Broken! Fix below. Add Cancel Action by using logical delete-->	
 	<div>
 		<a class="js-delete-attendance" data-event-id="@Model.Id">
 			Cancel

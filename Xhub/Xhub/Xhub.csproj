@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201707170056336_RemoveAllAttendanceUsageInCode.Designer.cs">
       <DependentUpon>201707170056336_RemoveAllAttendanceUsageInCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707171521039_AddIsCanceledToEvent.cs" />
+    <Compile Include="Migrations\201707171521039_AddIsCanceledToEvent.Designer.cs">
+      <DependentUpon>201707171521039_AddIsCanceledToEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Old_Migrations\201706192007234_InitialModel.cs" />
     <Compile Include="Old_Migrations\201706192007234_InitialModel.Designer.cs">
       <DependentUpon>201706192007234_InitialModel.cs</DependentUpon>
@@ -402,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707170056336_RemoveAllAttendanceUsageInCode.resx">
       <DependentUpon>201707170056336_RemoveAllAttendanceUsageInCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707171521039_AddIsCanceledToEvent.resx">
+      <DependentUpon>201707171521039_AddIsCanceledToEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Old_Migrations\201706192007234_InitialModel.resx">
       <DependentUpon>201706192007234_InitialModel.cs</DependentUpon>
