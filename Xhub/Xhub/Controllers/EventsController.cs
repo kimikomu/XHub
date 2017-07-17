@@ -107,11 +107,10 @@ namespace Xhub.Controllers
 
 		// Return a view model with a populated Events list
 		[Authorize]
-		public ActionResult Edit(int id)
+		public ActionResult Edit(int eventId)
 		{
 			var userId = User.Identity.GetUserId();
-
-			var eVent = _context.Events.Single(e => e.Id == id && e.EventOwnerId == userId);
+			var eVent = _context.Events.Single(e => e.Id == eventId && e.EventOwnerId == userId);
 
 			var viewModel = new EventsFormViewModel
 			{
@@ -176,7 +175,24 @@ namespace Xhub.Controllers
 				.Single(e => e.Id == eventId);
 			eVent.EventType = _context.EventTypes.Single(e => e.Id == eVent.EventTypeId);
 
-			return View("Details", eVent);
+			return View(eVent);
+		}
+
+		[Authorize]
+		public ActionResult MyEventDetails(int? eventId)
+		{
+			// Avoid null exception
+			if (eventId == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var eVent = _context.Events
+				.Include(e => e.Attendances)
+				.Single(e => e.Id == eventId);
+			eVent.EventType = _context.EventTypes.Single(e => e.Id == eVent.EventTypeId);
+
+			return View(eVent);
 		}
 
 		public ActionResult Cancel(int eventid)

@@ -12,7 +12,7 @@
 		<li>
 			@e.EventName - @e.DateTime - Location: @e.EventLocation
 			<div>
-				<a href="@Url.Action("Edit", "Events", new { id = e.Id })">Edit</a>
+				<a href="@Url.Action("MyEventDetails", "Events", new { eventId = e.Id })">Details</a>
 			</div>
 		</li>
 	}
