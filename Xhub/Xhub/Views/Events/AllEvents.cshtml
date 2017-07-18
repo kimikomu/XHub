@@ -3,10 +3,12 @@
 @model IEnumerable<Event>
 
 @{
-	ViewBag.Title = "All Events Page";
+	ViewBag.Title = "Events";
 }
 
 @Html.ValidationSummary()
+
+<h2>Upcoming Events</h2>
 
 <ul>
 	@foreach (var eVent in Model)

@@ -24,7 +24,124 @@ textarea {
 }
 
 /* Bootstrap overrides */
+body {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	background-color: black;
+	color: white;
+}
+
+h2 {
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: Jaldi, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+	font-family: Jaldi, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+.container {
+	max-width: 1380px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+/*right navbar backslash*/
+.navbar-inverse .navbar-nav > li > div {
+	position: relative;
+	display: block;
+	margin: 0 4px;
+	padding: 15px 0;
+}
+
+.navbar-inverse .navbar-brand {
+	font-family: Arvo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	color: #fff;
+}
+
+.navbar-inverse .navbar-brand:hover {
+	color: grey;
+}
+
+/*links on the right side of the nav-bar*/
+.navbar-nav.navbar-right > li > a {
+	color: #cac9c9;
+	border-bottom: .5px solid grey;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.navbar-nav.navbar-right > li > a:hover {
+	color: grey;
+}
+	#registerLink {
+	margin-left: 0;
+}
+
+.underbar {
+	position: fixed;
+	margin-top: 10px;
+	margin-left: 30px;
+	padding: 0;
+}
+
+.underbar > ul > li {
+	margin-left: 0;
+}
+
+.underbar > ul > li > a{
+	padding-top: 5px;
+	color: #ffffff;
+	background: transparent;
+}
+
+.underbar > ul > li > a:hover {
+	color: grey;
+	font-weight: bold;
+	text-decoration: underline;
+	background: transparent;
+}
+
+.hero-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: 60px;
+}
+.body-content {
+	max-width: 1180px;
+}
+
+h3 {
+	margin-bottom: 6px;
+}
+
+hr {
+	margin-top: 0;
+}
+
 span.field-validation-error {
 	color: red;
 	font-weight: bold;
 }
+
+.push-down {
+	margin-bottom: 40px;
+}
+

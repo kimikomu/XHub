@@ -4,7 +4,7 @@
 	ViewBag.Title = "My Events";
 }
 
-<h1>Events I've Created</h1>
+<h2>Events I've Created</h2>
 
 <ul>
 	@foreach (var e in Model)
@@ -23,3 +23,8 @@
 		</li>
 	}
 </ul>
+
+<div>
+	<a href="@Url.Action("Add", "Events")">Add New Event</a>
+</div>
+
