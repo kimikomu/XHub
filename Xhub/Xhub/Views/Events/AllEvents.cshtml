@@ -10,34 +10,36 @@
 
 <h2>Upcoming Events</h2>
 
-<ul>
-	@foreach (var eVent in Model)
-	{
-		var userId = User.Identity.GetUserId();
+<div id="" style="overflow:auto; height: 200px;">
+	<ul>
+		@foreach (var eVent in Model)
+		{
+			var userId = User.Identity.GetUserId();
 
-		// Show links for each event if user is logged in
-		<li>
-			@eVent.EventName - @eVent.DateTime
+			// Show links for each event if user is logged in
+			<li>
+				@eVent.EventName - @eVent.DateTime
 			
-			@if (eVent.IsCanceled)
-			{
-				<div>Canceled</div>
-			}
+				@if (eVent.IsCanceled)
+				{
+					<div class="canceled">Canceled</div>
+				}
 
-			@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
-			{
-				<div>Attending!</div>
-			}
+				@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
+				{
+					<div class="attending">Attending!</div>
+				}
 			
-			@if (User.Identity.IsAuthenticated)
-			{
-				// Pass event id to the controller
-				<div>
-					<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
-						Details
-					</a>
-				</div>
-			}
-		</li>
-	}
-</ul>
+				@if (User.Identity.IsAuthenticated)
+				{
+					// Pass event id to the controller
+					<div>
+						<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
+							Details
+						</a>
+					</div>
+				}
+			</li>
+		}
+	</ul>
+</div>

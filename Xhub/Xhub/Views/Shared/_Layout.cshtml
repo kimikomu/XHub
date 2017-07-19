@@ -10,29 +10,28 @@
 
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			@Html.ActionLink("XAVIER'S SCHOOL FOR GIFTED YOUNGSTERS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-		</div>
-		<div class="navbar-collapse collapse">
-			@Html.Partial("_LoginPartial")
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("X-Hub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Events", "AllEvents", "Events")</li>
+					<li>@Html.ActionLink("Courses", "Sorry", "Attendance")</li>
+					@*<li>@Html.ActionLink("Teachers", "Add", "TeacherEvents")</li>*@
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
 		</div>
 	</div>
-</div>
-<div class="container underbar">
-	<ul class="nav navbar-nav">
-		<li>@Html.ActionLink("About", "About", "Home")</li>
-		<li>@Html.ActionLink("Events", "AllEvents", "Events")</li>
-		<li>@Html.ActionLink("Courses", "Sorry", "Attendance")</li>
-		@*<li>@Html.ActionLink("Teachers", "Add", "TeacherEvents")</li>*@
-	</ul>
-</div>
+
 	@if (ViewBag.Title == "Home")
 	{
 		// Include image if at Homepage
@@ -40,11 +39,12 @@
 			<img  class="hero-image" src="~/Images/hero.png"/>
 		</div>
 	}
+
 	<div class="container body-content">
 		@RenderBody()
 		<div class="push-down"></div>
 		<footer>
-			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+			<p>@DateTime.Now.Year - X-Corporation</p>
 		</footer>
 	</div>
 
