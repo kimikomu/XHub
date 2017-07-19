@@ -27,7 +27,7 @@
 
 @if (Model.IsCanceled)
 {
-	<div>Canceled</div>
+	<div class="canceled">Canceled</div>
 }
 
 @if (User.Identity.IsAuthenticated && !Model.IsCanceled)

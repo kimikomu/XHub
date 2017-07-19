@@ -10,7 +10,7 @@
 
 <h2>Upcoming Events</h2>
 
-<div id="" style="overflow:auto; height: 200px;">
+<div class="scroll well well-lg">
 	<ul>
 		@foreach (var eVent in Model)
 		{
@@ -18,8 +18,8 @@
 
 			// Show links for each event if user is logged in
 			<li>
-				@eVent.EventName - @eVent.DateTime
-			
+				@eVent.EventName - @eVent.DateTime.ToString("MMM dd - hh:mm tt")
+							
 				@if (eVent.IsCanceled)
 				{
 					<div class="canceled">Canceled</div>
@@ -27,7 +27,7 @@
 
 				@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
 				{
-					<div class="attending">Attending!</div>
+					<div class="attending">Attending</div>
 				}
 			
 				@if (User.Identity.IsAuthenticated)
@@ -43,3 +43,10 @@
 		}
 	</ul>
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+	<div>
+		<a href="@Url.Action("Add", "Events")">Add New Event</a>
+	</div>
+}
