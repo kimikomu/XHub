@@ -12,9 +12,11 @@ namespace Xhub.ViewModels
 		public string Heading { get; set; }
 
 		[Required(ErrorMessage = "The Event Name field is required.")]
+		[StringLength(255, ErrorMessage = "Event Name cannot be longer than 255 characters.")]
 		public string EventName { get; set; }
 
 		[Required(ErrorMessage = "The Location field is required.")]
+		[StringLength(255, ErrorMessage = "Location cannot be longer than 255 characters.")]
 		public string EventLocation { get; set; }
 
 		[Required]
@@ -23,6 +25,7 @@ namespace Xhub.ViewModels
 		[Required]
 		public string Time { get; set; }
 
+		[StringLength(500, ErrorMessage = "Description cannot be longer than 500 characters.")]
 		public string Description { get; set; }
 
 		[Required(ErrorMessage = "The Type field is required.")]
@@ -47,5 +50,12 @@ namespace Xhub.ViewModels
 
 			return true;
 		}
+
+//		public bool CorrectDateTimeFormat(string date, string time)
+//		{
+//			DateTime.ParseExact(date, "yyyy-MM-dd", null);
+//
+//			return true;
+//		}
 	}
 }

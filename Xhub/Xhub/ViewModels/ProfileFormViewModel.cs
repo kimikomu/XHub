@@ -8,12 +8,15 @@ namespace Xhub.ViewModels
 		public int Id { get; set; }
 
 		[Required]
+		[StringLength(100, ErrorMessage = "Name cannot be longer than 100 characters.")]
 		public string Name { get; set; }
 
 		[Required]
+		[StringLength(100, ErrorMessage = "Alias cannot be longer than 100 characters.")]
 		public string Alias { get; set; }
 
 		[Required]
+		[StringLength(255, ErrorMessage = "Ability cannot be longer than 255 characters.")]
 		public string Ability { get; set; }
 
 		[Required]
