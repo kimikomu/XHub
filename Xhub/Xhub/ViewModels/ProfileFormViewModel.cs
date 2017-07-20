@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Xhub.Models;
 
 namespace Xhub.ViewModels
@@ -18,9 +17,7 @@ namespace Xhub.ViewModels
 		public string Ability { get; set; }
 
 		[Required]
-		public int Grade { get; set; }
-
-		public IEnumerable<Grade> Grades { get; set; }
+		public Student.Grades Grade { get; set; }
 
 		[Required]
 		public Student.Origins Origin { get; set; }

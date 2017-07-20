@@ -16,13 +16,12 @@ namespace Xhub.Controllers
 			_context = new ApplicationDbContext();
 		}
 		
-		// Return a form with a populated list of grades
+		// Get the form
 		[Authorize]
 		public ActionResult CreateProfile()
 		{
 			var viewModel = new ProfileFormViewModel
 			{
-				Grades = _context.Grades.ToList(),
 				Heading = "Add Your Profile"
 			};
 
@@ -38,9 +37,6 @@ namespace Xhub.Controllers
 			// Ensure form validation
 			if (!ModelState.IsValid)
 			{
-				// Grades list is not null
-				viewModel.Grades = _context.Grades.ToList();
-
 				return View("ProfileForm", viewModel);
 			}
 
@@ -52,7 +48,7 @@ namespace Xhub.Controllers
 				Name = viewModel.Name,
 				Alias = viewModel.Alias,
 				Ability = viewModel.Ability,
-				GradeId = viewModel.Grade,
+				Grade = viewModel.Grade,
 				Origin = viewModel.Origin,
 				StudentUserId = userId
 			};
@@ -70,7 +66,6 @@ namespace Xhub.Controllers
 		{
 			var userId = User.Identity.GetUserId();
 			var student = _context.Students.Single(s => s.StudentUserId == userId);
-			student.Grade = _context.Grades.Single(g => g.Id == student.GradeId);
 
 			return View(student);
 		}
@@ -86,12 +81,11 @@ namespace Xhub.Controllers
 			var viewModel = new ProfileFormViewModel
 			{
 				Id = student.Id,
-				Grades = _context.Grades.ToList(),
 				Heading = "Edit Your Profile",
 				Name = student.Name,
 				Alias = student.Alias,
 				Ability = student.Ability,
-				Grade = student.GradeId,
+				Grade = student.Grade,
 				Origin = student.Origin
 			};
 
@@ -107,9 +101,6 @@ namespace Xhub.Controllers
 			// Ensure form validation
 			if (!ModelState.IsValid)
 			{
-				// Grades list is not null
-				viewModel.Grades = _context.Grades.ToList();
-
 				return View("ProfileForm", viewModel);
 			}
 
@@ -122,7 +113,7 @@ namespace Xhub.Controllers
 			student.Name = viewModel.Name;
 			student.Alias = viewModel.Alias;
 			student.Ability = viewModel.Ability;
-			student.GradeId = viewModel.Grade;
+			student.Grade = viewModel.Grade;
 			student.Origin = viewModel.Origin;
 
 			_context.SaveChanges();

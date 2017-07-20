@@ -18,9 +18,7 @@ namespace Xhub.Models
 		[StringLength(255)]
 		public string Ability { get; set; }
 
-		public Grade Grade { get; set; }
-
-		public int GradeId { get; set; }
+		public Grades Grade { get; set; }
 
 		public Origins Origin { get; set; }
 

@@ -9,7 +9,6 @@ namespace Xhub.Models
 		public DbSet<EventType> EventTypes { get; set; }
 		public DbSet<Attendance> Attendances { get; set; }
 		public DbSet<Student> Students { get; set; }
-		public DbSet<Grade> Grades { get; set; }
 
 		public ApplicationDbContext()
 			: base("DefaultConnection", throwIfV1Schema: false)
