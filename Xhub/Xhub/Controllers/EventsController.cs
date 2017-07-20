@@ -37,6 +37,28 @@ namespace Xhub.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Add(EventsFormViewModel viewModel)
 		{
+			// Date format must be valid
+			if (viewModel.CorrectDateFormat() == false)
+			{
+				ModelState.AddModelError("Date", "The date format is invalid.");
+
+				// Events list is not null
+				viewModel.EventTypes = _context.EventTypes.ToList();
+
+				return View("EventForm", viewModel);
+			}
+
+			// Time format must be valid
+			if (viewModel.CorrectTimeFormat() == false)
+			{
+				ModelState.AddModelError("Time", "The time format is invalid.");
+
+				// Events list is not null
+				viewModel.EventTypes = _context.EventTypes.ToList();
+
+				return View("EventForm", viewModel);
+			}
+
 			// Ensure form validation
 			if (!ModelState.IsValid || viewModel.DateTimeAvailable() == false)
 			{
@@ -133,9 +155,34 @@ namespace Xhub.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(EventsFormViewModel viewModel)
 		{
-			// Ensure form validation
-			if (!ModelState.IsValid)
+			// Date format must be valid
+			if (viewModel.CorrectDateFormat() == false)
 			{
+				ModelState.AddModelError("Date", "The date format is invalid.");
+
+				// Events list is not null
+				viewModel.EventTypes = _context.EventTypes.ToList();
+
+				return View("EventForm", viewModel);
+			}
+
+			// Time format must be valid
+			if (viewModel.CorrectTimeFormat() == false)
+			{
+				ModelState.AddModelError("Time", "The time format is invalid.");
+
+				// Events list is not null
+				viewModel.EventTypes = _context.EventTypes.ToList();
+
+				return View("EventForm", viewModel);
+			}
+
+			// Ensure form validation
+			if (!ModelState.IsValid || viewModel.DateTimeAvailable() == false)
+			{
+				ModelState.AddModelError("Date", "The date/time is not available.");
+				ModelState.AddModelError("Time", "The date/time is not available.");
+			
 				// Events list is not null
 				viewModel.EventTypes = _context.EventTypes.ToList();
 

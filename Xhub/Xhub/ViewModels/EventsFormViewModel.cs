@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using Xhub.Models;
 
 namespace Xhub.ViewModels
@@ -51,11 +52,25 @@ namespace Xhub.ViewModels
 			return true;
 		}
 
-//		public bool CorrectDateTimeFormat(string date, string time)
-//		{
-//			DateTime.ParseExact(date, "yyyy-MM-dd", null);
-//
-//			return true;
-//		}
+		public bool CorrectDateFormat()
+		{
+			DateTime parsed;
+			var formats = new[] { "M/d/yyyy", "M/dd/yyyy", "MM/d/yyyy", "MM/dd/yyyy" };
+
+			bool valid = DateTime.TryParseExact(Date, formats,
+				CultureInfo.CurrentCulture, DateTimeStyles.None, out parsed);
+
+			return valid;
+		}
+
+		public bool CorrectTimeFormat()
+		{
+			DateTime parsed;
+
+			bool valid = DateTime.TryParseExact(Time, "HH:mm",
+				CultureInfo.CurrentCulture, DateTimeStyles.None, out parsed);
+
+			return valid;
+		}
 	}
 }
