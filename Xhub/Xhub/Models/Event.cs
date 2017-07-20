@@ -13,7 +13,6 @@ namespace Xhub.Models
 
 		public ApplicationUser EventOwner { get; set; }
 
-		[Required]
 		public string EventOwnerId { get; set; }	
 
 		public DateTime DateTime { get; set; }
@@ -31,7 +30,7 @@ namespace Xhub.Models
 		[StringLength(255)]
 		public string EventName { get; set; }
 
-		[StringLength(255)]
+		[StringLength(500)]
 		public string Description { get; set; }
 
 		public ICollection<Attendance> Attendances { get; private set; }

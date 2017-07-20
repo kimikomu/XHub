@@ -313,6 +313,14 @@
     <Compile Include="Migrations\201707200302306_DropGradeTable.Designer.cs">
       <DependentUpon>201707200302306_DropGradeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707200430202_EventOwnerIdIsNotRequiredToMakeAnEvent.cs" />
+    <Compile Include="Migrations\201707200430202_EventOwnerIdIsNotRequiredToMakeAnEvent.Designer.cs">
+      <DependentUpon>201707200430202_EventOwnerIdIsNotRequiredToMakeAnEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707201541476_IncreaseDescriptionStringLengthAttribute.cs" />
+    <Compile Include="Migrations\201707201541476_IncreaseDescriptionStringLengthAttribute.Designer.cs">
+      <DependentUpon>201707201541476_IncreaseDescriptionStringLengthAttribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -506,6 +514,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707200302306_DropGradeTable.resx">
       <DependentUpon>201707200302306_DropGradeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707200430202_EventOwnerIdIsNotRequiredToMakeAnEvent.resx">
+      <DependentUpon>201707200430202_EventOwnerIdIsNotRequiredToMakeAnEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707201541476_IncreaseDescriptionStringLengthAttribute.resx">
+      <DependentUpon>201707201541476_IncreaseDescriptionStringLengthAttribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
