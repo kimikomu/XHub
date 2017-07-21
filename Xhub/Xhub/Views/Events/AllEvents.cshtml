@@ -18,8 +18,6 @@
 
 			// Show links for each event if user is logged in
 			<li>
-				@*@eVent.EventName - @eVent.DateTime.ToString("MMM dd - hh:mm tt")*@
-
 				<div class="date-container">
 					<div class="date-date">
 						@eVent.DateTime.ToString("MMM dd") @eVent.DateTime.ToString("hh:mm tt")
@@ -34,18 +32,19 @@
 					</div>
 				</div>
 
-				@if (eVent.IsCanceled)
-				{
-					<div class="all-canceled">Canceled</div>
-				}
-
-				@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
-				{
-					<div class="all-attending">Attending</div>
-				}
-
 				@if (User.Identity.IsAuthenticated)
 				{
+					
+					if (eVent.IsCanceled)
+					{
+						 <div class="all-canceled">Canceled</div>
+					}
+
+					if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
+					{
+						 <div class="all-attending">Attending</div>
+					}
+					
 					// Pass event id to the controller
 					<div class="details-link">
 						<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
