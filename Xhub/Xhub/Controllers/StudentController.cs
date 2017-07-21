@@ -65,7 +65,13 @@ namespace Xhub.Controllers
 		public ActionResult StudentInfo()
 		{
 			var userId = User.Identity.GetUserId();
-			var student = _context.Students.Single(s => s.StudentUserId == userId);
+			var student = _context.Students.FirstOrDefault(s => s.StudentUserId == userId);
+
+			// Create a profile if one does not exist
+			if (student == null)
+			{
+				return RedirectToAction("CreateProfile");
+			}
 
 			return View(student);
 		}
