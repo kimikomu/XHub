@@ -12,7 +12,7 @@
 		Event Name: @Model.EventName
 	</li>
 	<li>
-		Time: @Model.DateTime
+		Time: @Model.DateTime.ToString("MMM dd - hh:mm tt")
 	</li>
 	<li>
 		Location: @Model.EventLocation
@@ -39,7 +39,7 @@
 	</div>
 	<div>
 		<a class="js-delete-attendance" data-event-id="@Model.Id">
-			Cancel
+			Cancel This Event
 		</a>
 	</div>
 }
@@ -47,11 +47,11 @@
 @section scripts
 {
 	<script>
+		// Confirm cancel before calling action
 		$(document).ready(function() {
 			$(".js-delete-attendance").click(function() {
 				if (confirm("Are you sure you want to cancel this event?")) {
 
-				// Send the event id to the action
 					var url = '@Url.Action("Cancel", "Events", new {eventId = Model.Id})';
 					window.location.href = url;
 				}

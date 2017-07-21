@@ -13,7 +13,7 @@
 		Event Name: @Model.EventName
 	</li>
 	<li>
-		Time: @Model.DateTime
+		Time: @Model.DateTime.ToString("MMM dd") at @Model.DateTime.ToString("hh:mm tt")
 	</li>
 	<li>
 		Location: @Model.EventLocation
@@ -59,9 +59,10 @@
 @section scripts
 {
 	<script>
+		// Confirm delete before calling action
 		$(document).ready(function() {
 			$(".js-delete-attendance").click(function() {
-				if (confirm("Are you sure you want to cancel attendance?")) {
+				if (confirm("Are you sure you want to remove your attendance?")) {
 
 					var url = '@Url.Action("Delete", "Attendance", new {eventId = Model.Id})';
 					window.location.href = url;

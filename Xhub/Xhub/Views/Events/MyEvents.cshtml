@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Xhub.Models.Event>
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<Xhub.Models.Event>
 
 @{
 	ViewBag.Title = "My Events";
@@ -6,23 +7,32 @@
 
 <h2>Events I've Created</h2>
 
-<ul>
-	@foreach (var e in Model)
-	{	
-		<li>
-			@e.EventName - @e.DateTime - Location: @e.EventLocation
-			
-			@if (e.IsCanceled)
-			{
-				<div class="canceled">Canceled</div>
-			}
-			
-			<div>
-				<a href="@Url.Action("MyEventDetails", "Events", new { eventId = e.Id })">Details</a>
-			</div>		
-		</li>
-	}
-</ul>
+<div class="well well-lg scroll">
+	<ul class="events">
+		@foreach (var eVent in Model)
+		{	
+			var userId = User.Identity.GetUserId();
+
+			<li>			
+				@if (eVent.IsCanceled)
+				{
+					<div class="canceled">Canceled</div>
+				}
+				
+				@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
+				{
+					<div class="attending">Attending</div>
+				}
+
+				@eVent.EventName - @eVent.DateTime.ToString("MMM dd  hh:mm tt") - Location: @eVent.EventLocation
+
+				<div>
+					<a href="@Url.Action("MyEventDetails", "Events", new { eventId = eVent.Id })">Details</a>
+				</div>		
+			</li>
+		}
+	</ul>
+</div>
 
 <div>
 	<a href="@Url.Action("Add", "Events")">Add New Event</a>

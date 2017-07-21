@@ -173,8 +173,24 @@ span.field-validation-error {
 	font-weight: bold;
 }
 
+footer {
+	height: 100px;
+	width: 100%;
+}
+
 .push-down {
 	margin-bottom: 40px;
+}
+
+.all-canceled {
+	position: absolute;
+	bottom: 45px;
+	color: red;
+	font-weight: bold;
+}
+
+.attending {
+	color: green;
 }
 
 .canceled {
@@ -182,7 +198,9 @@ span.field-validation-error {
 	font-weight: bold;
 }
 
-.attending {
+.all-attending {
+	position: absolute;
+	bottom: 45px;
 	color: green;
 }
 
@@ -194,6 +212,27 @@ span.field-validation-error {
 	border-color: #222;
 }
 
+/***********************
+	Page Styles
+************************/
+.events {
+	list-style: none;
+}
+
+.events > li {
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.events > li .details {
+	position: absolute;
+	top: 0;
+	left: 180px;
+}
+
+/************************
+	Media Queries
+*************************/
 @media (max-width: 1250px) {
 	.body-content {
 		max-width: 1000px;
@@ -235,5 +274,34 @@ span.field-validation-error {
 
 	.hero-image {
 		margin-top: 2px;
+	}
+}
+
+@media (max-width: 560px) {
+	.events > li .date-container {
+		display: none;
+	}
+
+	.events > li .details {
+		left: 0;
+	}
+
+	.all-attending {
+		bottom: 58px;
+	}
+
+	.all-canceled {
+		bottom: 58px;
+	}
+
+	.events > li .details-link {
+		padding-top: 35px;
+	}
+}
+
+@media (max-width: 360px) {
+	.events {
+		padding-left: 0;
+		margin-left: -10px;
 	}
 }

@@ -7,26 +7,29 @@
 
 <h1>Events I'm Attending</h1>
 
-<ul>
-	@foreach (var eVent in Model)
-	{
-		<li>
-			@eVent.EventName - @eVent.DateTime
+<div class="well well-lg scroll">
+	<ul class="events">
+		@foreach (var eVent in Model)
+		{
+			<li>
+				@eVent.EventName - @eVent.DateTime.ToString("MMM dd  hh:mm tt")
 
-			@if (User.Identity.IsAuthenticated)
-			{
-				if (eVent.IsCanceled)
+				@if (User.Identity.IsAuthenticated)
 				{
-					<div class="canceled">Canceled</div>
-				}
+					if (eVent.IsCanceled)
+					{
+						<div class="canceled">Canceled</div>
+					}
 				
-				// Pass event id to the controller
-				<div>
-					<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
-						Details
-					</a>
-				</div>
-			}
-		</li>
-	}
-</ul>
+					// Pass event id to the controller
+					<div>
+						<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
+							Details
+						</a>
+					</div>
+				}
+			</li>
+		}
+	</ul>
+</div>
+ 

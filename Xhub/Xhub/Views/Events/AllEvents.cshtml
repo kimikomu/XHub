@@ -11,29 +11,43 @@
 <h2>Upcoming Events</h2>
 
 <div class="scroll well well-lg">
-	<ul>
+	<ul class="events">
 		@foreach (var eVent in Model)
 		{
 			var userId = User.Identity.GetUserId();
 
 			// Show links for each event if user is logged in
 			<li>
-				@eVent.EventName - @eVent.DateTime.ToString("MMM dd - hh:mm tt")
-							
+				@*@eVent.EventName - @eVent.DateTime.ToString("MMM dd - hh:mm tt")*@
+
+				<div class="date-container">
+					<div class="date-date">
+						@eVent.DateTime.ToString("MMM dd") @eVent.DateTime.ToString("hh:mm tt")
+					</div>
+				</div>
+				<div class="details">
+					<div class="event-name">
+						@eVent.EventName
+					</div>
+					<div class="event-type">
+						@eVent.EventType.Type
+					</div>
+				</div>
+
 				@if (eVent.IsCanceled)
 				{
-					<div class="canceled">Canceled</div>
+					<div class="all-canceled">Canceled</div>
 				}
 
 				@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
 				{
-					<div class="attending">Attending</div>
+					<div class="all-attending">Attending</div>
 				}
-			
+
 				@if (User.Identity.IsAuthenticated)
 				{
 					// Pass event id to the controller
-					<div>
+					<div class="details-link">
 						<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
 							Details
 						</a>

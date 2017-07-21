@@ -13,5 +13,10 @@ namespace Xhub.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult ComingSoon()
+		{
+			return View();
+		}
 	}
 }

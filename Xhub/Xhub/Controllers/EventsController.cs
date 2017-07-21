@@ -94,7 +94,8 @@ namespace Xhub.Controllers
 		{
 			var upcomingEvents = _context.Events
 				.OrderBy(e => e.DateTime)
-				.Include(e => e.Attendances);
+				.Include(e => e.Attendances)
+				.Include(e => e.EventType);
 			
 			return View(upcomingEvents);
 		}
@@ -108,6 +109,7 @@ namespace Xhub.Controllers
 			var myEvents = _context.Events
 				.Where(e => e.EventOwnerId == userId && e.DateTime > DateTime.Now)
 				.OrderBy(e => e.DateTime)
+				.Include(e => e.Attendances)
 				.ToList();
 
 			return View(myEvents);
@@ -211,7 +213,7 @@ namespace Xhub.Controllers
 		[Authorize]
 		public ActionResult Details(int? eventId)
 		{
-			// Avoid null exception
+			// Avoid null exception	
 			if (eventId == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -225,6 +227,7 @@ namespace Xhub.Controllers
 			return View(eVent);
 		}
 
+		// Return the user's event's details to view
 		[Authorize]
 		public ActionResult MyEventDetails(int? eventId)
 		{
@@ -242,6 +245,7 @@ namespace Xhub.Controllers
 			return View(eVent);
 		}
 
+		// Cancel event using logical delete
 		public ActionResult Cancel(int eventId)
 		{
 			var userId = User.Identity.GetUserId();
