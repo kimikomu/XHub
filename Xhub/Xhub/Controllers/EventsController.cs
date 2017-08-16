@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Xhub.Models;
@@ -216,7 +215,7 @@ namespace Xhub.Controllers
 			// Avoid null exception	
 			if (eventId == null)
 			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				throw new Exception("Cannot find event/s.");
 			}
 
 			var eVent = _context.Events
@@ -234,7 +233,7 @@ namespace Xhub.Controllers
 			// Avoid null exception
 			if (eventId == null)
 			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				throw new Exception("Cannot find my event/s.");
 			}
 
 			var eVent = _context.Events
