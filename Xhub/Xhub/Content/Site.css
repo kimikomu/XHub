@@ -30,13 +30,13 @@ textarea {
 /*	General Styles	*/
 
 :focus {
-	outline: red auto 5px;
+	outline: #ff6347 auto 5px;
 }
 
 body {
 	background: #222;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-	color: white;
+	color: #fefefe;
 }
 
 .body-content {
@@ -79,15 +79,25 @@ footer {
 a {
 	font-family: Jaldi, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 18px;
+	color: #00bfff;
 }
 
+a:hover,
 a:focus {
-	text-decoration: none;
+	text-decoration: underline;
 	outline: none;
+	color: #00bfff;
+}
+
+.btn-primary {
+	color: #ffffff;
+	background-color: #2a669a;
+	border-color: #2a669a;
 }
 
 span.field-validation-error {
-	color: red;
+	color: #ff6347;
+	font-size: 18px;
 	font-weight: bold;
 }
 
@@ -104,7 +114,7 @@ span.field-validation-error {
 
 .container {
 	height: 40px;
-	max-width: 1380px;
+	max-width: 1280px;
 	margin-top: 10px;
 }
 
@@ -114,16 +124,16 @@ span.field-validation-error {
 }
 
 .dropdown-menu {
-	background-color: #222222;
+	background-color: #222;
 }
 
 .dropdown-menu > li > a {
-	color: #eee;
+	color: #fefefe;
 }
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-	color: grey;
+	color: #bfbfbf;
 	text-decoration: underline;
 	background-color: transparent;
 }
@@ -163,9 +173,9 @@ span.field-validation-error {
 	background: #222;
 }
 
-.navbar-nav.navbar-right > li > a:hover {
-	color: grey;
-}
+	.navbar-nav.navbar-right > li > a:hover {
+		color: #ADADAD;
+	}
 
 .navbar-inverse .navbar-nav > li > a {
 	background: #000;
@@ -192,30 +202,34 @@ span.field-validation-error {
 .all-canceled {
 	position: absolute;
 	bottom: 45px;
-	color: red;
+	color: #f2784b;
 	font-weight: bold;
 }
 
 .all-attending {
 	position: absolute;
 	bottom: 45px;
-	color: green;
+	color: #00cf80;
+	font-weight: bold
 }
 
 .attending {
-	color: green;
+	color: #00cf80;
+	font-weight: bold;
 }
 
 .canceled {
-	color: red;
+	color: #f2784b;
 	font-weight: bold;
 }
 
 .scroll {
-	overflow:auto; 
-	height: 400px; 
+	overflow: auto;
+	height: 400px;
+/*	background-color: #e7efff;*/
 	background-color: #333;
-	border-color: #222;
+	color: #bbd4d4;
+	border-color: #1c2833;
 }
 
 .events {
