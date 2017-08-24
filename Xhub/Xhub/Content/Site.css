@@ -223,13 +223,21 @@ span.field-validation-error {
 	font-weight: bold;
 }
 
-.scroll {
+.scroll,
+.table-scroll{
 	overflow: auto;
-	height: 400px;
 /*	background-color: #e7efff;*/
 	background-color: #333;
 	color: #bbd4d4;
 	border-color: #1c2833;
+}
+
+.scroll {
+	height: 400px;
+}
+
+.table-scroll {
+	height: 40px;
 }
 
 .events {

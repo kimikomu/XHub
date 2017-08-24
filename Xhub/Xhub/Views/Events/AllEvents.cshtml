@@ -31,6 +31,13 @@
 						@eVent.EventType.Type
 					</div>
 				</div>
+									
+				@*Pass event id to the controller*@
+				<div class="details-link">
+					<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
+						Details
+					</a>
+				</div>
 
 				@if (User.Identity.IsAuthenticated)
 				{
@@ -44,13 +51,6 @@
 					{
 						 <div class="all-attending">Attending</div>
 					}
-					
-					// Pass event id to the controller
-					<div class="details-link">
-						<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
-							Details
-						</a>
-					</div>
 				}
 			</li>
 		}
