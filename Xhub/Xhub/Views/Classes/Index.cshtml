@@ -15,9 +15,6 @@
 			@Html.DisplayNameFor(model => model.ClassName)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.TeacherId)
-		</th>
-		<th>
 			@Html.DisplayNameFor(model => model.FirstClass)
 		</th>
 		<th>
@@ -34,20 +31,17 @@
 			@Html.DisplayFor(modelItem => item.ClassName)
 		</td>
 		<td>
-			@Html.DisplayFor(modelItem => item.TeacherId)
-		</td>
-		<td>
 			@Html.DisplayFor(modelItem => item.FirstClass)
 		</td>
 		<td>
-			@Html.DisplayFor(modelItem => item.LengthInMinutes)
+			@Html.DisplayFor(modelItem => item.LengthInMinutes) Minutes
 		</td>
 		<td>
 			@Html.DisplayFor(modelItem => item.ClassLocation)
 		</td>
 		<td>
 @*            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
-			@Html.ActionLink("Details", "Details", new { id=item.Id })
+@*			@Html.ActionLink("Details", "Details", new { id=item.Id })*@
 @*            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
 @*	        @Html.ActionLink("Attend", "Attend", new { id=item.Id })*@
 		</td>
