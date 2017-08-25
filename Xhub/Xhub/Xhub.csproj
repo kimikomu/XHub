@@ -326,6 +326,10 @@
     <Compile Include="Migrations\201708251808291_AddTeacherAndClassTables.Designer.cs">
       <DependentUpon>201708251808291_AddTeacherAndClassTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708251901133_ChangeLastClassToSecondClass.cs" />
+    <Compile Include="Migrations\201708251901133_ChangeLastClassToSecondClass.Designer.cs">
+      <DependentUpon>201708251901133_ChangeLastClassToSecondClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -531,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708251808291_AddTeacherAndClassTables.resx">
       <DependentUpon>201708251808291_AddTeacherAndClassTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708251901133_ChangeLastClassToSecondClass.resx">
+      <DependentUpon>201708251901133_ChangeLastClassToSecondClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

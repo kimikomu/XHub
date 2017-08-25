@@ -15,10 +15,10 @@ namespace Xhub.Models
 
 		public int TeacherId { get; set; }
 
-		[DisplayName("First Day of Class")]
+		[DisplayName("Class Times")]
 		public DateTime FirstClass { get; set; }
 
-		public DateTime LastClass { get; set; }
+		public DateTime SecondClass { get; set; }
 
 		[DisplayName("Class Length")]
 		public int LengthInMinutes { get; set; }
