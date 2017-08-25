@@ -1,18 +1,26 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using Xhub.Models;
 
 namespace Xhub.Controllers
 {
 	public class ClassesController : Controller
 	{
+		private readonly ApplicationDbContext _context;
+
+		public ClassesController()
+		{
+			_context = new ApplicationDbContext();
+		}
+
 		// GET: Classes
-//		public ActionResult Index()
-//		{
-//			var model = from c in _classes
-//				orderby c.Id
-//				select c;
-//
-//			return View(model);
-//		}
+		public ActionResult Index()
+		{
+			var classes = _context.Classes
+				.OrderBy(c => c.FirstClass);
+				
+			return View(classes);
+		}
 
 		// GET: Classes/Details/5
 		public ActionResult Details(int id)

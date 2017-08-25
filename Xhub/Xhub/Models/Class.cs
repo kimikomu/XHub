@@ -10,26 +10,27 @@ namespace Xhub.Models
 
 		[Required]
 		[StringLength(255)]
-		[DisplayName("Class Name")]
+		[DisplayName("Title")]
 		public string ClassName { get; set; }
 
 		public int TeacherId { get; set; }
 
-		[DisplayName("Class Times")]
+		[DisplayName("Times")]
 		public DateTime FirstClass { get; set; }
 
+		[DisplayName("")]
 		public DateTime SecondClass { get; set; }
 
-		[DisplayName("Class Length")]
+		[DisplayName("Length")]
 		public int LengthInMinutes { get; set; }
 
 		[Required]
 		[StringLength(255)]
-		[DisplayName("Class Location")]
+		[DisplayName("Location")]
 		public string ClassLocation { get; set; }
 
 		[StringLength(500)]
-		[DisplayName("Class Description")]
+		[DisplayName("Description")]
 		public string ClassDescription { get; set; }
 	}
 }
