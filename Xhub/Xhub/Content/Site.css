@@ -319,11 +319,19 @@ span.field-validation-error {
 	.all-canceled {
 		display: none;
 	}
+
+	.remove-at-560px {
+		display: none;
+	}
 }
 
 @media (max-width: 360px) {
 	.events {
 		padding-left: 4px;
 		margin-left: -5px;
+	}
+
+	.remove-at-360px {
+		display: none;
 	}
 }

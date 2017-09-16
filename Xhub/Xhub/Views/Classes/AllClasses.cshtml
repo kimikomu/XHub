@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Xhub.Models.Class>
+
+@{
+	ViewBag.Title = "Classes";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ClassName)
+		</th>
+		<th class="remove-at-560px">
+			@Html.DisplayNameFor(model => model.FirstClass)
+		</th>
+		<th class="remove-at-560px">
+			@Html.DisplayNameFor(model => model.SecondClass)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Teacher)
+		</th>
+		<th class="remove-at-360px">
+			@Html.DisplayNameFor(model => model.ClassLocation)
+		</th>
+		<th></th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr class="well table-scroll">
+			<td>
+				@item.ClassName
+			</td>
+			<td class="remove-at-560px">
+				@item.FirstClass.ToString("dddd") @item.FirstClass.ToString("t")
+			</td>
+			<td class="remove-at-560px">
+				@item.SecondClass.ToString("dddd") @item.SecondClass.ToString("t")
+			</td>
+			<td>
+				@item.Teacher.TeacherLastName
+			</td>
+			<td class="remove-at-360px">
+				@item.ClassLocation
+			</td>
+			<td>
+				@*@Html.ActionLink("Details", "Details", new { classId = item.Id })*@
+				@*	        @Html.ActionLink("Attend", "Attend", new { id=item.Id })*@
+			</td>
+		</tr>
+	}
+</table>

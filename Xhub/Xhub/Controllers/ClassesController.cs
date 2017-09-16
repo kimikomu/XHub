@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using Xhub.Models;
 
 namespace Xhub.Controllers
 {
-	public class ClassesController : Controller
+    public class ClassesController : Controller
 	{
 		private readonly ApplicationDbContext _context;
 
@@ -14,10 +15,12 @@ namespace Xhub.Controllers
 		}
 
 		// GET: Classes
-		public ActionResult Index()
+		public ActionResult AllClasses()
 		{
 			var classes = _context.Classes
-				.OrderBy(c => c.FirstClass);
+				.OrderBy(c => c.FirstClass)
+				.Include(c => c.Teacher)
+				.ToList();
 				
 			return View(classes);
 		}

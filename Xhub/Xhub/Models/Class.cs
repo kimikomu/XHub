@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Xhub.Models
 {
-	public class Class
+    public class Class
 	{
 		public int Id { get; set; }
 
@@ -14,6 +14,8 @@ namespace Xhub.Models
 		public string ClassName { get; set; }
 
 		public int TeacherId { get; set; }
+
+		public Teacher Teacher { get; set; }
 
 		[DisplayName("Times")]
 		public DateTime FirstClass { get; set; }
