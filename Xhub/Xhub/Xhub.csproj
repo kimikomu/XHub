@@ -424,6 +424,7 @@
     <Content Include="Views\Home\ComingSoon.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Classes\AllClasses.cshtml" />
+    <Content Include="Views\Classes\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

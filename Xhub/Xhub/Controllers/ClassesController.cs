@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Xhub.Models;
@@ -26,9 +27,21 @@ namespace Xhub.Controllers
 		}
 
 		// GET: Classes/Details/5
-		public ActionResult Details(int id)
+		public ActionResult Details(int? classId)
 		{
-			return View("Index");
+			if (classId == null)
+			{
+				throw new Exception("Cannot find class.");
+			}
+			var cLass = _context.Classes
+				.Include(c => c.Teacher)
+				.Single(c => c.Id == classId);
+
+			if (cLass == null)
+			{
+				return HttpNotFound();
+			}
+			return View(cLass);
 		}
 
 //		// GET: Classes/Create

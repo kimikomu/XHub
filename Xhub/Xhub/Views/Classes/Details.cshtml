@@ -1,0 +1,39 @@
+﻿@model Xhub.Models.Class
+
+@{
+	ViewBag.Title = "Class Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+<ul>
+	<li>
+		Class: @Model.ClassName
+	</li>
+	<li>
+		Teacher: @Model.Teacher.TeacherLastName
+	</li>
+	<li>
+		Times: 
+		<div style="text-indent: 1em">
+			<div>@Model.FirstClass.ToString("dddd") at @Model.FirstClass.ToString("h:mm tt")</div>
+			<div>@Model.SecondClass.ToString("dddd") at @Model.SecondClass.ToString("h:mm tt")</div>
+		</div>
+	</li>
+	<li>
+		Location: @Model.ClassLocation
+	</li>
+	<li>
+		Length: @Model.LengthInMinutes mins
+	</li>
+	<li>
+		Description: @Model.ClassDescription
+	</li>
+</ul>
+
+<p>
+	@*	@Html.ActionLink("Attend", "Attend", new { id = Model.Id }) |*@
+	@Html.ActionLink("Back to List", "AllClasses")
+</p>
