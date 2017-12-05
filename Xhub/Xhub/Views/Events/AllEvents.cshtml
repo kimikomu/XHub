@@ -17,7 +17,8 @@
 			var userId = User.Identity.GetUserId();
 
 			// Show links for each event if user is logged in
-			<li>
+
+			<li class="well well-lg event-well">
 				<div class="date-container">
 					<div class="date-date">
 						@eVent.DateTime.ToString("MMM dd") @eVent.DateTime.ToString("hh:mm tt")
@@ -44,12 +45,12 @@
 					
 					if (eVent.IsCanceled)
 					{
-						 <div class="all-canceled">Canceled</div>
+						<div class="all-canceled">Canceled</div>
 					}
 
 					if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
 					{
-						 <div class="all-attending">Attending</div>
+						<div class="all-attending">Attending</div>
 					}
 				}
 			</li>
