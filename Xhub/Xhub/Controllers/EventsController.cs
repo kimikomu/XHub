@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using Xhub.Models;
 using Xhub.ViewModels;
 
 namespace Xhub.Controllers
 {
-	public class EventsController : Controller
+    public class EventsController : Controller
 	{
 		// Set up the DbContext
 		private readonly ApplicationDbContext _context;
@@ -84,6 +84,11 @@ namespace Xhub.Controllers
 			// Add to database
 			_context.Events.Add(e);
 			_context.SaveChanges();
+
+			if (viewModel.Attending)
+			{
+			    return RedirectToAction("Attend", "Attendance", new {eventId = e.Id});               
+			}
 
 			return RedirectToAction("MyEvents", "Events");
 		}
