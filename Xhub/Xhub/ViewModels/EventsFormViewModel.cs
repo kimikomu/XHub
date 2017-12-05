@@ -6,7 +6,7 @@ using Xhub.Models;
 
 namespace Xhub.ViewModels
 {
-	public class EventsFormViewModel
+    public class EventsFormViewModel
 	{
 		public int Id { get; set; }
 
@@ -33,6 +33,8 @@ namespace Xhub.ViewModels
 		public byte EventType { get; set; }                             // set to byte bc there won't be more than 255 types
 
 		public IEnumerable<EventType> EventTypes { get; set; }
+
+		public bool Attending { get; set; }
 
 		public string Action
 		{
