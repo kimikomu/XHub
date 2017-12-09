@@ -3,38 +3,78 @@
 
 @{
 	ViewBag.Title = "My Events";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Events I've Created</h2>
 
-<div class="well well-lg scroll">
-	<ul class="events">
-		@foreach (var eVent in Model)
-		{	
-			var userId = User.Identity.GetUserId();
+<h1>My Events</h1>
 
-			<li>			
-				@if (eVent.IsCanceled)
+<div class="row">
+	<div class="col-lg-6">
+		<h3>Attending</h3>
+		<div class="well well-lg scroll">
+			<ul class="events">
+				@foreach (var eVent in Model)
 				{
-					<div class="canceled">Canceled</div>
+					<li>
+						@eVent.EventName - @eVent.DateTime.ToString("MMM dd  hh:mm tt")
+
+						@if (User.Identity.IsAuthenticated)
+						{
+							if (eVent.IsCanceled)
+							{
+								<div class="canceled">Canceled</div>
+							}
+
+							// Pass event id to the controller
+							<div>
+								<a href="@Url.Action("Details", "Events", new {eventId = eVent.Id})">
+									Details
+								</a>
+							</div>
+						}
+					</li>
 				}
-				
-				@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-lg-6 top-margin">
+		
+		<div class="flex-container">
+			<h3>Created</h3>
+
+			<a class="btn btn-primary create-button" href="@Url.Action("Add", "Events")">Create New</a>
+		</div>
+
+		<div class="well well-lg scroll">
+			<ul class="events">
+				@foreach (var eVent in Model)
 				{
-					<div class="attending">Attending</div>
+					var userId = User.Identity.GetUserId();
+
+					<li>
+						@if (eVent.IsCanceled)
+						{
+							<div class="canceled">Canceled</div>
+						}
+
+						@if (eVent.Attendances.Any(a => a.AttendeeId == userId) && !eVent.IsCanceled)
+						{
+							<div class="attending">Attending</div>
+						}
+
+						@eVent.EventName - @eVent.DateTime.ToString("MMM dd  hh:mm tt") - Location: @eVent.EventLocation
+
+						<div>
+							<a href="@Url.Action("MyEventDetails", "Events", new {eventId = eVent.Id})">Details</a>
+						</div>
+					</li>
 				}
+			</ul>
+		</div>
 
-				@eVent.EventName - @eVent.DateTime.ToString("MMM dd  hh:mm tt") - Location: @eVent.EventLocation
 
-				<div>
-					<a href="@Url.Action("MyEventDetails", "Events", new { eventId = eVent.Id })">Details</a>
-				</div>		
-			</li>
-		}
-	</ul>
+
+	</div>
 </div>
-
-<div>
-	<a href="@Url.Action("Add", "Events")">Add New Event</a>
-</div>
-

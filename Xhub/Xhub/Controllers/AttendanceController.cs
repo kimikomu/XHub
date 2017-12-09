@@ -1,13 +1,13 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using Xhub.Models;
 
 namespace Xhub.Controllers
 {
-	[Authorize]
+    [Authorize]
 	public class AttendanceController : Controller
 	{
 		// Set up the DbContext
@@ -40,7 +40,7 @@ namespace Xhub.Controllers
 			_context.Attendances.Add(attendance);
 			_context.SaveChanges();
 
-			return RedirectToAction("Attending", "Events");
+			return RedirectToAction("MyEvents", "Events");
 		}
 
 		// Temporary Sorry page
@@ -71,7 +71,7 @@ namespace Xhub.Controllers
 			_context.Entry(attendance).State = EntityState.Deleted;
 			_context.SaveChanges();
 
-			return RedirectToAction("Attending", "Events");
+			return RedirectToAction("MyEvents", "Events");
 		}
 	}
 }
