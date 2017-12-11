@@ -111,7 +111,7 @@ namespace Xhub.Controllers
 			var userId = User.Identity.GetUserId();
 
 			var myEvents = _context.Events
-				.Where(e => e.EventOwnerId == userId && e.DateTime > DateTime.Now)
+				//.Where(e => e.EventOwnerId == userId && e.DateTime > DateTime.Now)
 				.OrderBy(e => e.DateTime)
 				.Include(e => e.Attendances)
 				.ToList();
@@ -120,18 +120,18 @@ namespace Xhub.Controllers
 		}
 
 		// Get the events the user is attending and go to view
-		public ActionResult Attending()
-		{
-			var userId = User.Identity.GetUserId();
+		//public ActionResult Attending()
+		//{
+		//	var userId = User.Identity.GetUserId();
 
-			var eventsImAttending = _context.Attendances
-				.Where(a => a.AttendeeId == userId)
-				.Select(a => a.Event)
-				.OrderBy(e => e.DateTime)
-				.ToList();
+		//	var eventsImAttending = _context.Attendances
+		//		.Where(a => a.AttendeeId == userId)
+		//		.Select(a => a.Event)
+		//		.OrderBy(e => e.DateTime)
+		//		.ToList();
 
-			return View(eventsImAttending);
-		}
+		//	return View(eventsImAttending);
+		//}
 
 		// Return a view model with a populated Events list
 		[Authorize]

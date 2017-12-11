@@ -36,7 +36,7 @@
 		 if (Model.Attendances.Any(a => a.EventId == Model.Id) && Model.Attendances.Any(a => a.AttendeeId == userId))
 		 {
 			 <div>
-				 <a class="js-delete-attendance" data-event-id="@Model.Id">
+				 <a href="#" class="js-delete-attendance" data-event-id="@Model.Id">
 					 Remove Attendance
 				 </a>
 			 </div>
