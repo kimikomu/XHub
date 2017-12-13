@@ -34,6 +34,10 @@
 </ul>
 
 <p>
-	@*	@Html.ActionLink("Attend", "Attend", new { id = Model.Id }) |*@
+	
+	<a href="@Url.Action("Enroll", "Enrollment", new {classId = Model.Id})">
+		Enroll
+	</a>
+
 	@Html.ActionLink("Back to List", "AllClasses")
 </p>
