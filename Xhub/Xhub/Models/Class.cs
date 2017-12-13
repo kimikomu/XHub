@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -34,5 +36,12 @@ namespace Xhub.Models
 		[StringLength(500)]
 		[DisplayName("Description")]
 		public string ClassDescription { get; set; }
+
+	    public ICollection<Enrollment> Enrollments { get; private set; }
+
+	    public Class()
+	    {
+	        Enrollments = new Collection<Enrollment>();
+	    }
 	}
 }

@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace Xhub.Models
 {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 	{
 		public DbSet<Event> Events { get; set; }
 		public DbSet<EventType> EventTypes { get; set; }
@@ -11,6 +11,7 @@ namespace Xhub.Models
 		public DbSet<Student> Students { get; set; }
 		public DbSet<Teacher> Teachers { get; set; }
 		public DbSet<Class> Classes { get; set; }
+	    public DbSet<Enrollment> Enrollments { get; set; }
 
 		public ApplicationDbContext()
 			: base("DefaultConnection", throwIfV1Schema: false)
@@ -29,6 +30,11 @@ namespace Xhub.Models
 				.HasRequired(a => a.Event)
 				.WithMany(e => e.Attendances)
 				.WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Enrollment>()
+                .HasRequired(e => e.Class)
+                .WithMany(e => e.Enrollments)
+                .WillCascadeOnDelete(false);
 
 			base.OnModelCreating(modelBuilder);
 		}

@@ -335,11 +335,16 @@
     <Compile Include="Migrations\201709152047282_AddTeacherToClass.Designer.cs">
       <DependentUpon>201709152047282_AddTeacherToClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712131642303_CreateEnrollmentTable.cs" />
+    <Compile Include="Migrations\201712131642303_CreateEnrollmentTable.Designer.cs">
+      <DependentUpon>201712131642303_CreateEnrollmentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventType.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -547,6 +552,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709152047282_AddTeacherToClass.resx">
       <DependentUpon>201709152047282_AddTeacherToClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131642303_CreateEnrollmentTable.resx">
+      <DependentUpon>201712131642303_CreateEnrollmentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
